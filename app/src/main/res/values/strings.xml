@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Oblivion</string>
     <string name="splash_screen">SplashScreen</string>
+    <string name="username_input">USERNAME</string>
+    <string name="password_button">PASSWORD</string>
+    <string name="forget_password_button">Forgot Password</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="login_button">LOGIN</string>
 </resources>
