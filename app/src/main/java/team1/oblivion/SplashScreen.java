@@ -28,9 +28,9 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 try {
                     // 4 seconds delay
-                    sleep(4000);
-                    // Send it to Main Activity
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    sleep(3000);
+                    // Send it to Login Activity
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class); // redirected to login activity next
                     startActivity(intent);
 
                     // Destroy activity when done
