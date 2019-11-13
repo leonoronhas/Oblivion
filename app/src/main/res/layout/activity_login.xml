@@ -47,7 +47,6 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="@android:color/background_light"
-        android:onClick="onClick"
         android:text="@string/login_button"
         android:textColor="@color/colorPrimary"
         android:textColorHighlight="@android:color/background_light"

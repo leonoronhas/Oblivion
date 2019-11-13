@@ -13,7 +13,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button loginButton;
+    private String checkUser;  //username
+    private String checkPass;  //password
     private EditText username;
     private EditText password;
     private boolean checkInput;
@@ -33,36 +34,42 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.hide();
 
         // Assign inputs & buttons
-        loginButton = findViewById(R.id.buttonLogin);
-        password    = findViewById(R.id.editTextLogin);
-        username    = findViewById(R.id.editTextPassword);
+        Button loginButton = findViewById(R.id.buttonLogin);
+        password = findViewById(R.id.editTextLogin);
+        username = findViewById(R.id.editTextPassword);
 
-        String checkUser = username.getText().toString();
-        String checkPass = password.getText().toString();
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class); // redirected to main activity next
 
-        if(checkUser.isEmpty() || checkPass.isEmpty()){
-            checkInput = false;
-        }
-        else{
-            checkInput = true;
-        }
+                // Convert to string
+                checkUser = username.getText().toString();
+                checkPass = password.getText().toString();
 
+                if (checkUser.isEmpty() && checkPass.isEmpty()) {
+                    checkInput = false;
+                } else
+                    checkInput = true;
+
+                if (checkInput) {
+                    startActivity(intent);
+                }
+                else {
+                    displayError();
+                }
+            }
+        });
     }
 
 
-    public void onClick(View view){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class); // redirected to main activity next
-
-        if(checkInput){
-            startActivity(intent);
-        }
-        if(!checkInput){
-            // Toast message as reminder
-            Toast toast = Toast.makeText(this,"Incorrect Username or Password!", Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER, 0, -600);
-            toast.show();
-        }
+    public void displayError() {
+        // Toast message as reminder
+        Toast toast = Toast.makeText(this, "Incorrect Username or Password!", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, -600);
+        toast.show();
     }
 }
+
 
 
