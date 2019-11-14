@@ -35,9 +35,12 @@ public class LoginActivity extends AppCompatActivity {
 
         // Assign inputs & buttons
         Button loginButton = findViewById(R.id.buttonLogin);
+        Button forgotPass  = findViewById(R.id.buttonForgotPassword);
+        Button signUp      = findViewById(R.id.buttonSignUp);
         password = findViewById(R.id.editTextLogin);
         username = findViewById(R.id.editTextPassword);
 
+        // Login button algorithm
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,21 +50,28 @@ public class LoginActivity extends AppCompatActivity {
                 checkUser = username.getText().toString();
                 checkPass = password.getText().toString();
 
-                if (checkUser.isEmpty() && checkPass.isEmpty()) {
+                if (checkUser.isEmpty() || checkPass.isEmpty()) {
                     checkInput = false;
                 } else
                     checkInput = true;
 
                 if (checkInput) {
                     startActivity(intent);
-                }
-                else {
+                } else {
                     displayError();
                 }
             }
         });
-    }
 
+        // Sign Up button algorithm
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class); // redirected to main activity next
+            }
+        });
+
+    }
 
     public void displayError() {
         // Toast message as reminder
