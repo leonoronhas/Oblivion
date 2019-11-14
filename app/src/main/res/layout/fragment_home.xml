@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home Frangment"
+        android:text="Home Fragment"
         android:textSize="30sp"
         android:layout_centerInParent="true" />
 
