@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+     <item
+         android:id="@+id/home_page"
+         android:icon="@drawable/ic_home_black_24dp"
+         android:title="Meetings" />
+
+    <item
+        android:id="@+id/task_page"
+        android:icon="@drawable/ic_task_icon_24dp"
+        android:title="Task" />
+
+    <item
+        android:id="@+id/report_page"
+        android:icon="@drawable/ic_assignment_black_24dp"
+        android:title="Reports" />
+
+    <item
+        android:id="@+id/calendar_page"
+        android:icon="@drawable/ic_calendar_icon_24dp"
+        android:title="Calendar" />
+</menu>
