@@ -68,17 +68,20 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class); // redirected to main activity next
+                startActivity(intent);
             }
         });
 
     }
-
+    // Display toast
     public void displayError() {
         // Toast message as reminder
-        Toast toast = Toast.makeText(this, "Incorrect Username or Password!", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, -600);
+        Toast toast = Toast.makeText(this, "Incorrect Username or Password!", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, -700);
         toast.show();
     }
+
+    // Forgot Password
 }
 
 
