@@ -50,10 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 checkUser = username.getText().toString();
                 checkPass = password.getText().toString();
 
-                if (checkUser.isEmpty() || checkPass.isEmpty()) {
-                    checkInput = false;
-                } else
-                    checkInput = true;
+                checkInput = !checkUser.isEmpty() && !checkPass.isEmpty();
 
                 if (checkInput) {
                     startActivity(intent);
@@ -69,6 +66,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class); // redirected to main activity next
                 startActivity(intent);
+            }
+        });
+
+        //forgot password
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ForgotActivity.class); // redirected  to forgot activity
+                startActivity(intent);
+
             }
         });
 

@@ -10,4 +10,7 @@
     <string name="password_input">Password</string>
     <string name="confirm_password_input">Confirm Password</string>
     <string name="create_account">DONE</string>
+    <string name="text_view_recover_id">Enter your email address</string>
+    <string name="buttom_recover_id">Recover</string>
+    <string name="recover_email_id">Email</string>
 </resources>
