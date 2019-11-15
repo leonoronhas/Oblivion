@@ -13,4 +13,5 @@
     <string name="text_view_recover_id">Enter your email address</string>
     <string name="buttom_recover_id">Recover</string>
     <string name="recover_email_id">Email</string>
+    <string name="create_meeting_button">create a new meeting button</string>
 </resources>
