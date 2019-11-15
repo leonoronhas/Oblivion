@@ -59,7 +59,6 @@ public class SignUpActivity extends AppCompatActivity {
                 else {
                     startActivity(intent);
                 }
-
             }
         });
     }
@@ -70,5 +69,4 @@ public class SignUpActivity extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER, 0, -20);
         toast.show();
     }
-
 }

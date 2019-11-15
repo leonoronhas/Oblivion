@@ -12,17 +12,20 @@
         android:textSize="30sp"
         android:layout_centerInParent="true" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="70dp"
-        android:layout_height="59dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="3dp"
-        android:background="@android:color/background_light"
-        android:contentDescription="@string/create_meeting_button"
-        android:foreground="@drawable/ic_plus_button"
-        app:srcCompat="@android:color/background_light" />
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="false"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="8dp"
+        app:fabCustomSize="@android:dimen/app_icon_size"
+        app:fabSize="normal"
+        app:maxImageSize="45dp"
+        app:srcCompat="@drawable/ic_add_circle_outline_white_24dp" />
 
 </RelativeLayout>
