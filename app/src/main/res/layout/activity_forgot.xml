@@ -39,6 +39,7 @@
         android:layout_marginBottom="32dp"
         android:background="@android:color/background_light"
         android:fontFamily="monospace"
+        android:onClick="onClick"
         android:text="@string/buttom_recover_id"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
