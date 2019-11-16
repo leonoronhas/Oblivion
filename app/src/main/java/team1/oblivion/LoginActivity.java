@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
     public void displayError() {
         // Toast message as reminder
         Toast toast = Toast.makeText(this, "Incorrect Username or Password!", Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, -700);
+        toast.setGravity(Gravity.CENTER, 0, -800);
         toast.show();
     }
 
