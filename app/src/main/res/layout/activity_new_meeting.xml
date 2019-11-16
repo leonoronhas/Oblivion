@@ -234,5 +234,72 @@
             android:inputType="number"
             android:importantForAutofill="no" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/background_light"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:contentDescription="@string/remove_warning_button"
+                app:srcCompat="@android:color/background_light" />
+
+            <ImageButton
+                android:id="@+id/imageButtonCancelTemplate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:contentDescription="@string/cancel_button"
+                app:srcCompat="@drawable/ic_cancel_24dp" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:contentDescription="@string/remove_warning_button"
+                app:srcCompat="@android:color/background_light" />
+
+            <ImageButton
+                android:id="@+id/imageButtonSaveTemplate"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:contentDescription="@string/save_new_meeting_button"
+                app:srcCompat="@drawable/ic_save_button_24dp" />
+
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:contentDescription="@string/remove_warning_button"
+                app:srcCompat="@android:color/background_light" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
