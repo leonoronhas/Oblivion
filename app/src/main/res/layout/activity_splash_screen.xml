@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/splashScreenImage"
-        android:layout_width="2990dp"
+        android:layout_width="3000dp"
         android:layout_height="1617dp"
         android:contentDescription="@string/splash_screen"
         android:src="@drawable/splashscreencolorimagelogo"
