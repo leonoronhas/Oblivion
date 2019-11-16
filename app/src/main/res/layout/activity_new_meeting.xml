@@ -24,8 +24,13 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/title_input"
+                android:importantForAutofill="no"
                 android:inputType="textPersonName"
-                android:importantForAutofill="no" />
+                android:textColor="@color/colorPrimary"
+                android:textColorHighlight="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColorLink="@android:color/darker_gray"
+                />
 
             <EditText
                 android:id="@+id/editTextDate"
@@ -34,8 +39,12 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/date_input"
+                android:importantForAutofill="no"
                 android:inputType="date"
-                android:importantForAutofill="no" />
+                android:textColor="@color/colorPrimary"
+                android:textColorHighlight="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColorLink="@android:color/darker_gray" />
 
             <EditText
                 android:id="@+id/editTextTime"
@@ -44,8 +53,12 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/time_input"
+                android:importantForAutofill="no"
                 android:inputType="time"
-                android:importantForAutofill="no" />
+                android:textColor="@color/colorPrimary"
+                android:textColorHighlight="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColorLink="@android:color/darker_gray" />
 
         </LinearLayout>
 
@@ -60,7 +73,11 @@
             android:ems="10"
             android:hint="@string/presiding_input"
             android:importantForAutofill="no"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -72,8 +89,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/conducting_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -86,8 +107,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/opening_hymn_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -99,8 +124,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/invocation_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -113,8 +142,12 @@
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/ward_business_input"
+            android:importantForAutofill="no"
             android:inputType="textMultiLine"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -126,8 +159,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/sacrament_hymn_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -139,8 +176,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/speaker_1_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -152,8 +193,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/speaker_2_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -165,8 +210,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/special_hymn_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -178,8 +227,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/speaker_3_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -191,8 +244,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/closing_hymn_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -204,8 +261,29 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/benediction_input"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/editTextAttendance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/attendance_input"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
@@ -218,21 +296,12 @@
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/notes_input"
+            android:importantForAutofill="no"
             android:inputType="textMultiLine"
-            android:importantForAutofill="no" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <EditText
-            android:id="@+id/editTextAttendance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/attendance_input"
-            android:inputType="number"
-            android:importantForAutofill="no" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/darker_gray" />
 
         <Space
             android:layout_width="match_parent"
