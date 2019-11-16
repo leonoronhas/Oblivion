@@ -46,7 +46,12 @@
                 android:hint="@string/time_input"
                 android:inputType="time"
                 android:importantForAutofill="no" />
+
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextPresiding"
@@ -54,8 +59,12 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/presiding_input"
-            android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="textPersonName" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextConducting"
@@ -66,6 +75,11 @@
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:visibility="visible" />
+
         <EditText
             android:id="@+id/editTextOpeningHymn"
             android:layout_width="match_parent"
@@ -75,6 +89,10 @@
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <EditText
             android:id="@+id/editTextInvocation"
             android:layout_width="match_parent"
@@ -83,6 +101,10 @@
             android:hint="@string/invocation_input"
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextWardBusiness"
@@ -94,6 +116,10 @@
             android:inputType="textMultiLine"
             android:importantForAutofill="no" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <EditText
             android:id="@+id/editTextSacramentHymn"
             android:layout_width="match_parent"
@@ -102,6 +128,10 @@
             android:hint="@string/sacrament_hymn_input"
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextFirstSpeaker"
@@ -112,6 +142,10 @@
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <EditText
             android:id="@+id/editTextSecondSpeaker"
             android:layout_width="match_parent"
@@ -120,6 +154,10 @@
             android:hint="@string/speaker_2_input"
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextSpecialHymn"
@@ -130,6 +168,10 @@
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <EditText
             android:id="@+id/editTextThirdSpeaker"
             android:layout_width="match_parent"
@@ -138,6 +180,10 @@
             android:hint="@string/speaker_3_input"
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextClosingHymn"
@@ -148,6 +194,10 @@
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <EditText
             android:id="@+id/editTextBenediction"
             android:layout_width="match_parent"
@@ -156,6 +206,10 @@
             android:hint="@string/benediction_input"
             android:inputType="textPersonName"
             android:importantForAutofill="no" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextNotes"
@@ -166,6 +220,10 @@
             android:hint="@string/notes_input"
             android:inputType="textMultiLine"
             android:importantForAutofill="no" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/editTextAttendance"
