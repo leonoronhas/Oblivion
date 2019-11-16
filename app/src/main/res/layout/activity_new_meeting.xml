@@ -18,146 +18,163 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editText18"
+                android:id="@+id/editTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="@string/title_input"
                 android:inputType="textPersonName"
-                android:text="Title" />
+                android:importantForAutofill="no" />
 
             <EditText
-                android:id="@+id/editText19"
+                android:id="@+id/editTextDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="@string/date_input"
                 android:inputType="date"
-                android:text="Date" />
+                android:importantForAutofill="no" />
 
             <EditText
-                android:id="@+id/editText20"
+                android:id="@+id/editTextTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="@string/time_input"
                 android:inputType="time"
-                android:text="Time" />
+                android:importantForAutofill="no" />
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editText21"
+            android:id="@+id/editTextPresiding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/presiding_input"
             android:inputType="textPersonName"
-            android:text="Presiding" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText22"
+            android:id="@+id/editTextConducting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/conducting_input"
             android:inputType="textPersonName"
-            android:text="Conducting" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText23"
+            android:id="@+id/editTextOpeningHymn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/opening_hymn_input"
             android:inputType="textPersonName"
-            android:text="Opening Hymn" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText24"
+            android:id="@+id/editTextInvocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/invocation_input"
             android:inputType="textPersonName"
-            android:text="Invocation" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText25"
+            android:id="@+id/editTextWardBusiness"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="start|top"
+            android:hint="@string/ward_business_input"
             android:inputType="textMultiLine"
-            android:text="Ward Business" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText26"
+            android:id="@+id/editTextSacramentHymn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/sacrament_hymn_input"
             android:inputType="textPersonName"
-            android:text="Sacrament Hymn" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText27"
+            android:id="@+id/editTextFirstSpeaker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/speaker_1_input"
             android:inputType="textPersonName"
-            android:text="1st Speaker" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText28"
+            android:id="@+id/editTextSecondSpeaker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/speaker_2_input"
             android:inputType="textPersonName"
-            android:text="2nd Speaker" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText29"
+            android:id="@+id/editTextSpecialHymn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/special_hymn_input"
             android:inputType="textPersonName"
-            android:text="Special Hymn" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText30"
+            android:id="@+id/editTextThirdSpeaker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/speaker_3_input"
             android:inputType="textPersonName"
-            android:text="3rd Speaker" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText31"
+            android:id="@+id/editTextClosingHymn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/closing_hymn_input"
             android:inputType="textPersonName"
-            android:text="Closing Hymn" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText32"
+            android:id="@+id/editTextBenediction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/benediction_input"
             android:inputType="textPersonName"
-            android:text="Benediction" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText33"
+            android:id="@+id/editTextNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="start|top"
+            android:hint="@string/notes_input"
             android:inputType="textMultiLine"
-            android:text="Notes" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editText34"
+            android:id="@+id/editTextAttendance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/attendance_input"
             android:inputType="number"
-            android:text="Attendance" />
+            android:importantForAutofill="no" />
 
     </LinearLayout>
 </ScrollView>

@@ -15,4 +15,21 @@
     <string name="recover_email_id">Email</string>
     <string name="create_meeting_button">create a new meeting button</string>
     <string name="title_input">Title</string>
+    <string name="date_input">Date</string>
+    <string name="time_input">Time</string>
+    <string name="presiding_input">Presiding</string>
+    <string name="conducting_input">Conducting</string>
+    <string name="opening_hymn_input">Opening Hymn</string>
+    <string name="invocation_input">Invocation</string>
+    <string name="ward_business_input">Ward Business</string>
+    <string name="sacrament_hymn_input">Sacrament Hymn</string>
+    <string name="speaker_1_input">First Speaker</string>
+    <string name="speaker_2_input">Second Speaker</string>
+    <string name="special_hymn_input">Special Hymn</string>
+    <string name="speaker_3_input">Third Speaker</string>
+    <string name="closing_hymn_input">Closing Hymn</string>
+    <string name="benediction_input">Benediction</string>
+    <string name="notes_input">Notes</string>
+    <string name="attendance_input">Attendance</string>
 </resources>
+
