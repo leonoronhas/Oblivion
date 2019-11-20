@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1099189461187",
+    "firebase_url": "https://oblivion-98fc0.firebaseio.com",
+    "project_id": "oblivion-98fc0",
+    "storage_bucket": "oblivion-98fc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1099189461187:android:4f901ec51424be091e0276",
+        "android_client_info": {
+          "package_name": "team1.oblivion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1099189461187-umm1mgin1rdcd3cvplbah1s6ttb8ca3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACusmRgSgGTSuzE7FaePy086aJ8WPKi4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1099189461187-umm1mgin1rdcd3cvplbah1s6ttb8ca3g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
