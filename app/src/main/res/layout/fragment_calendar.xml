@@ -2,13 +2,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background">
+    android:background="@color/colorPrimary">
+
+
 
     <TextView
+        android:id="@+id/chooseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calendar Fragment "
-        android:textSize="30sp"
-        android:layout_centerInParent="true" />
+        android:textColor="#fff"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="60dp"/>
+
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_marginTop="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/background_calendar">
+
+
+        <CalendarView
+            android:id="@+id/calendarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+<!--            android:theme="@style/calendarStyle"-->
+<!--            android:dateTextAppearance="@style/CalendarViewDateCustomText"-->
+<!--            android:weekDayTextAppearance="@style/CalendarViewWeekCustomText">-->
+
+
+        </CalendarView>
+
+
+    </LinearLayout>
+
+
+
+
 
 </RelativeLayout>

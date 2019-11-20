@@ -142,8 +142,9 @@ public class LoginActivity extends AppCompatActivity {
 
         if (user != null) {
             tvStat.setText(("Signed in: " + user.getEmail()));
-        } else
-            tvStat.setText(("Signed OUt"));
+        }
+//        else
+//            tvStat.setText(("Signed Out"));
 
     }
 

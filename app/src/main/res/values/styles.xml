@@ -6,6 +6,35 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
+
+    <!-- Green Ball-->
+    <style name="calendarStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:focusedMonthDateColor">#fff</item>
+        <item name="colorAccent">#c95d5d</item>
+    </style>
+
+    <!-- Week Days Color-->
+    <style name="CalendarViewDateCustomText" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">#fff</item>
+<!--        <item name="android:weekNumberColor">#fff</item>-->
+    </style>
+
+
+    <!-- Week Name Color-->
+    <style name="CalendarViewWeekCustomText" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">#fff</item>
+    </style>
+
+
+
+    <style name="Base.TextAppearance.Widget.AppCompat.Toolbar.Title." parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:textColor">#fff</item>
+
+
+    </style>
+
+
 
 </resources>

@@ -24,6 +24,8 @@
         android:textColorHighlight="@android:color/darker_gray"
         android:textColorHint="@android:color/darker_gray"
         android:textColorLink="@android:color/darker_gray"
+        android:textCursorDrawable="@drawable/custom_edit_text_cursor"
+        android:background="@drawable/custom_text_box_underline_selector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="monospace"
         android:text="@string/text_view_recover_id"
@@ -65,4 +67,16 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="382dp"
+        android:layout_height="330dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginEnd="145dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_add_floating_name_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>
