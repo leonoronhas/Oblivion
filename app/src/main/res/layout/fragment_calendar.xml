@@ -10,11 +10,11 @@
         android:id="@+id/chooseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calendar Fragment "
+        android:text="Calendar"
         android:textColor="#fff"
         android:textAlignment="center"
         android:textSize="32dp"
-        android:layout_marginLeft="65dp"
+        android:layout_marginLeft="145dp"
         android:layout_marginTop="60dp"/>
 
 
