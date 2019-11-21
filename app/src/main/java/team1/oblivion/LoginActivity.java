@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class); // redirected to main activity next
-
                 signUserIn();
 
                 startActivity(intent);
@@ -106,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ForgotActivity.class); // redirected  to forgot activity
 
                 startActivity(intent);
-
             }
         });
 
@@ -131,8 +129,6 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
 
         }
-
-
     }
 
     private void updateStatus() {
@@ -143,8 +139,8 @@ public class LoginActivity extends AppCompatActivity {
         if (user != null) {
             tvStat.setText(("Signed in: " + user.getEmail()));
         }
-//        else
-//            tvStat.setText(("Signed Out"));
+        else
+            tvStat.setText(("Signed Out"));
 
     }
 
@@ -175,28 +171,7 @@ public class LoginActivity extends AppCompatActivity {
         updateStatus();
     }
 
-    private void createUserAccount() {
-        if (!checkFormFields())
-            return;
 
-        String email = username.getText().toString();
-        String passwordString = password.getText().toString();
-
-
-        //Create the user account
-        mAuth.createUserWithEmailAndPassword(email, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, "User was created", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Account created failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-    }
 
     private void signUserIn() {
         if (!checkFormFields())
@@ -219,12 +194,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         });
-
-
     }
-
-
-    // Forgot Password
 }
 
 

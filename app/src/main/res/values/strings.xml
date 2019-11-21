@@ -34,5 +34,6 @@
     <string name="cancel_button">Cancel New Meeting Button</string>
     <string name="save_new_meeting_button">Save New Meeting Button</string>
     <string name="remove_warning_button">blank</string>
+    <string name="splash_screen_logo">Oblivion Logo initial screen</string>
 </resources>
 

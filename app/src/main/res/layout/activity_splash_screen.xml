@@ -18,9 +18,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewSplahScreenLogo"
         android:layout_width="415dp"
         android:layout_height="344dp"
+        android:contentDescription="@string/splash_screen_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
