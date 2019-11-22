@@ -12,6 +12,7 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.util.Calendar;
 
@@ -21,8 +22,11 @@ public class NewMeetingActivity extends AppCompatActivity {
     private TextView DisplayDate;
     private DatePickerDialog.OnDateSetListener DateSetListener;
 
-    private TextView DisplayTime;
-    private TimePickerDialog.OnTimeSetListener TimeSetListener;
+    private TextView displayTime;
+    private TimePickerDialog timePickerDialog;
+    private int currentHour;
+    private int currentMinute;
+    private String amPm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +68,40 @@ public class NewMeetingActivity extends AppCompatActivity {
             }
         };
 
+        // This will choose the time
+
+        displayTime = findViewById(R.id.selectTime);
+        displayTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                currentMinute = calendar.get(Calendar.MINUTE);
 
 
-        // This will get the time on a dialog
+                timePickerDialog = new TimePickerDialog(NewMeetingActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        if (hourOfDay >= 12) {
+                            amPm = "PM";
+                            hourOfDay -= 12;
+                        } else {
+                            amPm = "AM";
+                        }
+
+                        displayTime.setText(hourOfDay + ":" + minute + " " + amPm);
+                    }
+                }, currentHour,currentMinute,false);
+                timePickerDialog.show();
+
+            }
+        });
+
+
+
+
+
+         // This will get the time on a dialog
 //        DisplayTime = (TextView) findViewById(R.id.selectTime);
 //        DisplayTime.setOnClickListener(new View.OnClickListener() {
 //            @Override
