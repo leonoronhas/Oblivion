@@ -51,7 +51,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Date"
+                android:hint="@string/date_input"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textColorHighlight="@android:color/darker_gray"
@@ -62,10 +62,13 @@
             <TextView
                 android:id="@+id/selectTime"
                 android:layout_width="84dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:hint="@string/time_input"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
                 android:textSize="18sp" />
 
         </LinearLayout>
