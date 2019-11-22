@@ -97,33 +97,6 @@ public class NewMeetingActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-         // This will get the time on a dialog
-//        DisplayTime = (TextView) findViewById(R.id.selectTime);
-//        DisplayTime.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Calendar c = Calendar.getInstance();
-//                int hour = c.get(Calendar.HOUR_OF_DAY);
-//                int minutes = c.get(Calendar.MINUTE);
-//
-//                TimePickerDialog clock = new TimePickerDialog(NewMeetingActivity.this, android.R.style.Theme_Holo_Light_Dialog , TimeSetListener, hour, minutes, );
-//
-//                clock.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(50, 25, 87)));
-//                clock.show();
-//            }
-//        });
-//        TimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int month, int day) {
-//                String date = month + "/" + day + "/" + year;
-//                DisplayDate.setText(date);
-//            }
-//        };
-
     }
 
 }
