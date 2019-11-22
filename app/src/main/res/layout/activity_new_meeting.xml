@@ -52,6 +52,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Date"
+                android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textColorHighlight="@android:color/darker_gray"
                 android:textColorHint="@android:color/darker_gray"
@@ -63,20 +64,17 @@
                 android:layout_width="84dp"
                 android:layout_height="31dp"
                 android:layout_weight="1"
-                android:text="Time"
+                android:hint="@string/time_input"
+                android:textAlignment="center"
                 android:textSize="18sp" />
 
-            <ToggleButton
-                android:id="@+id/toggleButton"
-                android:layout_width="1sp"
-                android:layout_height="31dp"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="ToggleButton"
-                android:textColor="@android:color/background_light"
-                android:textOff="am"
-                android:textOn="pm" />
         </LinearLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#a3a3a3">
+
+        </View>
 
         <Space
                 android:layout_width="match_parent"
