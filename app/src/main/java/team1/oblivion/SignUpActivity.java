@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -69,7 +71,13 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
     }
+
+
 
     // Create account
     private void createUserAccount() {
@@ -85,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
-
+                    FirebaseUser user = mAuth.getCurrentUser();
                     checkInput = true;
                 } else {
                     Toast.makeText(SignUpActivity.this, "Account creation failed", Toast.LENGTH_SHORT).show();
@@ -122,4 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
         } else
             return true;
     }
+
+
+
 }
