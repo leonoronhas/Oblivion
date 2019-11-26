@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -29,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     //authentication FireBase
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    //private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,17 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+
+
+           //just testing database
+//
+//        FirebaseDatabase database;
+//        database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("message");
+//
+//        myRef.setValue("Hello, World!");
+
+   }
 
 
 
@@ -86,11 +98,16 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(SignUpActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
-                    FirebaseUser user = mAuth.getCurrentUser();
+                    Toast.makeText(getApplicationContext(), "Account created successfully", Toast.LENGTH_SHORT).show();
+
+                    //FirebaseUser user = mAuth.getCurrentUser();
+
+                    // that allows  to go to the next activity or not...
+
+                    finish();
                     checkInput = true;
                 } else {
-                    Toast.makeText(SignUpActivity.this, "Account creation failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Account creation failed", Toast.LENGTH_SHORT).show();
                     checkInput = false;
                 }
             }
@@ -119,10 +136,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         // Check if password and conf password match
-        if (!confPassString.equals(passString)) {
-            return false;
-        } else
-            return true;
+        return confPassString.equals(passString);
     }
 
 
