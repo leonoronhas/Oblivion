@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -46,7 +49,8 @@ public class NewMeetingActivity extends AppCompatActivity {
     private EditText secondSpeakerId;
     private EditText thirdSpeakerId;
 
-
+    private ArrayAdapter<CharSequence> typeAdapter;
+    private Spinner typeId;
 
 
     @Override
@@ -71,6 +75,12 @@ public class NewMeetingActivity extends AppCompatActivity {
         secondSpeakerId = findViewById(R.id.editTextSecondSpeaker);
         thirdSpeakerId = findViewById(R.id.editTextThirdSpeaker);
 
+
+        // WE DON'T KNOW WHY IT DOESN'T WORK
+//        typeAdapter = ArrayAdapter.createFromResource(this,
+//                R.array.meeting_type, android.R.layout.simple_spinner_item);
+//        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        typeId.setAdapter(typeAdapter);
 
 
         /********************************************************************************************/
@@ -142,6 +152,7 @@ public class NewMeetingActivity extends AppCompatActivity {
         });
 
         /*************************************************************************************************/
+
     }
 
 
