@@ -4,6 +4,8 @@ public class Notes {
 
     String notes;
 
+    String wardBusiness;
+
     public String getNotes() {
         return notes;
     }
@@ -12,7 +14,16 @@ public class Notes {
         this.notes = notes;
     }
 
-    public Notes(String notes) {
+    public String getWardBusiness() {
+        return wardBusiness;
+    }
+
+    public void setWardBusiness(String wardBusiness) {
+        this.wardBusiness = wardBusiness;
+    }
+
+    public Notes(String notes, String wardBusiness) {
         this.notes = notes;
+        this.wardBusiness = wardBusiness;
     }
 }

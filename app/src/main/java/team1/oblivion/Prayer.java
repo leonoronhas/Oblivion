@@ -2,26 +2,26 @@ package team1.oblivion;
 
 public class Prayer {
 
-    String invocation;
+    String firstPrayer;
 
-    String benediction;
+    String secondPrayer;
 
     String specialPrayer;
 
-    public String getInvocation() {
-        return invocation;
+    public String getfirstPrayer() {
+        return firstPrayer;
     }
 
-    public void setInvocation(String invocation) {
-        this.invocation = invocation;
+    public void setfirstPrayer(String firstPrayer) {
+        this.firstPrayer = firstPrayer;
     }
 
-    public String getBenediction() {
-        return benediction;
+    public String getsecondPrayer() {
+        return secondPrayer;
     }
 
-    public void setBenediction(String benediction) {
-        this.benediction = benediction;
+    public void setsecondPrayer(String secondPrayer) {
+        this.secondPrayer = secondPrayer;
     }
 
     public String getSpecialPrayer() {
@@ -32,9 +32,9 @@ public class Prayer {
         this.specialPrayer = specialPrayer;
     }
 
-    public Prayer(String invocation, String benediction, String specialPrayer) {
-        this.invocation = invocation;
-        this.benediction = benediction;
+    public Prayer(String firstPrayer, String secondPrayer, String specialPrayer) {
+        this.firstPrayer = firstPrayer;
+        this.secondPrayer = secondPrayer;
         this.specialPrayer = specialPrayer;
     }
 }

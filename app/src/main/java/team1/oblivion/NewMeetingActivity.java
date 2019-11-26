@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -28,10 +29,51 @@ public class NewMeetingActivity extends AppCompatActivity {
     private int currentMinute;
     private String amPm;
 
+    private EditText titleId;
+    private EditText presidingId;
+    private EditText conductingId;
+    private EditText openingHymnId;
+    private EditText sacramentHymnId;
+    private EditText specialHymnId;
+    private EditText closingHymnId;
+    private EditText firstPrayerId;
+    private EditText secondPrayerId;
+//    private EditText specialPrayerId;
+    private EditText wardBusinessId;
+    private EditText notesId;
+    private EditText attendanceId;
+    private EditText firstSpeakerId;
+    private EditText secondSpeakerId;
+    private EditText thirdSpeakerId;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_meeting);
+
+        titleId = findViewById(R.id.editTextTitle);
+        presidingId = findViewById(R.id.editTextPresiding);
+        conductingId = findViewById(R.id.editTextConducting);
+        openingHymnId = findViewById(R.id.editTextOpeningHymn);
+        sacramentHymnId = findViewById(R.id.editTextSacramentHymn);
+        specialHymnId = findViewById(R.id.editTextSpecialHymn);
+        closingHymnId = findViewById(R.id.editTextClosingHymn);
+        firstPrayerId = findViewById(R.id.editTextInvocation);
+        secondPrayerId = findViewById(R.id.editTextBenediction);
+//        specialPrayerId = findViewById(R.id.editTextSpecialPrayerId);
+        wardBusinessId = findViewById(R.id.editTextWardBusiness);
+        notesId = findViewById(R.id.editTextNotes);
+        attendanceId = findViewById(R.id.editTextAttendance);
+        firstSpeakerId = findViewById(R.id.editTextFirstSpeaker);
+        secondSpeakerId = findViewById(R.id.editTextSecondSpeaker);
+        thirdSpeakerId = findViewById(R.id.editTextThirdSpeaker);
+
+
+
+        /********************************************************************************************/
         View decorView = getWindow().getDecorView();
 
         // Hide the status bar.
@@ -68,6 +110,8 @@ public class NewMeetingActivity extends AppCompatActivity {
             }
         };
 
+        /********************************************************************************************/
+
         // This will choose the time
 
         displayTime = findViewById(R.id.selectTime);
@@ -97,6 +141,12 @@ public class NewMeetingActivity extends AppCompatActivity {
             }
         });
 
+        /*************************************************************************************************/
     }
+
+
+
+
+
 
 }

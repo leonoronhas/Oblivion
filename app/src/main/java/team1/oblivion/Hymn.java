@@ -2,24 +2,25 @@ package team1.oblivion;
 
 public class Hymn {
 
-    String firstHymn;
-    String secondHymn;
+    String openingHymn;
+    String sacramentHymn;
     String specialHymn;
+    String closingHymn;
 
-    public String getFirstHymn() {
-        return firstHymn;
+    public String getOpeningHymn() {
+        return openingHymn;
     }
 
-    public void setFirstHymn(String firstHymn) {
-        this.firstHymn = firstHymn;
+    public void setOpeningHymn(String openingHymn) {
+        this.openingHymn = openingHymn;
     }
 
-    public String getSecondHymn() {
-        return secondHymn;
+    public String getSacramentHymn() {
+        return sacramentHymn;
     }
 
-    public void setSecondHymn(String secondHymn) {
-        this.secondHymn = secondHymn;
+    public void setSacramentHymn(String sacramentHymn) {
+        this.sacramentHymn = sacramentHymn;
     }
 
     public String getSpecialHymn() {
@@ -30,9 +31,18 @@ public class Hymn {
         this.specialHymn = specialHymn;
     }
 
-    public Hymn(String firstHymn, String secondHymn, String specialHymn) {
-        this.firstHymn = firstHymn;
-        this.secondHymn = secondHymn;
+    public String getClosingHymn() {
+        return closingHymn;
+    }
+
+    public void setClosingHymn(String closingHymn) {
+        this.closingHymn = closingHymn;
+    }
+
+    public Hymn(String openingHymn, String sacramentHymn, String specialHymn, String closingHymn) {
+        this.openingHymn = openingHymn;
+        this.sacramentHymn = sacramentHymn;
         this.specialHymn = specialHymn;
+        this.closingHymn = closingHymn;
     }
 }
