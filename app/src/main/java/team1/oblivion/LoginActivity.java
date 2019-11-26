@@ -25,13 +25,15 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     Button forgotPass;
     Button signUp;
+    Button signOut;
     private String TAG = "FA_SIGNIN";
     private EditText username;
     private EditText password;
 
+
 //    //authentication FireBase
-//    private FirebaseAuth mAuth;
-//    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,33 +49,18 @@ public class LoginActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        //Get a reference to the Firebase auth object
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
         // Assign inputs & buttons
         loginButton = findViewById(R.id.buttonLogin);
         forgotPass = findViewById(R.id.buttonForgotPassword);
         signUp = findViewById(R.id.buttonSignUp);
         password = findViewById(R.id.editTextLogin);
         username = findViewById(R.id.editTextPassword);
+        signOut = findViewById(R.id.signOutButton);
 
-
-//        //Get a reference to the Firebase auth object
-//        mAuth = FirebaseAuth.getInstance();
-//
-//
-//        //Attach a new AuthListener to detect sig in and out
-//        mAuthListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//
-//                FirebaseUser user = firebaseAuth.getCurrentUser();
-//                if (user != null) {
-//                    Log.d(TAG, "Signed in: " + user.getUid());
-//                } else {
-//                    Log.d(TAG, "Currently Signed out");
-//                }
-//            }
-//        };
-
-        updateStatus();
 
 
         // Login button algorithm
@@ -81,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class); // redirected to main activity next
-               // signUserIn();
+                signUserIn();
 
                 startActivity(intent);
 
@@ -105,43 +92,18 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ForgotActivity.class); // redirected  to forgot activity
 
                 startActivity(intent);
+
+
             }
         });
 
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+            }
+        });
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        //add the Auth Listener
-       // mAuth.addAuthStateListener(mAuthListener);
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-
-//        //Remove the AuthListener
-//        if (mAuthListener != null) {
-//            mAuth.removeAuthStateListener(mAuthListener);
-//
-//        }
-    }
-
-    private void updateStatus() {
-        TextView tvStat = findViewById(R.id.tvSignInStatus);
-        //get the current user
-//       // FirebaseUser user = mAuth.getCurrentUser();
-//
-//        if (user != null) {
-//            tvStat.setText(("Signed in: " + user.getEmail()));
-//        }
-//        else
-//            tvStat.setText(("Signed Out"));
 
     }
 
@@ -164,38 +126,39 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    private void signUserOut() {
 
-        // sign the user out
 
-       // mAuth.signOut();
-        updateStatus();
+
+
+
+    private void signUserIn() {
+        if (!checkFormFields())
+            return;
+
+        String email = username.getText().toString();
+        String passwordString = password.getText().toString();
+
+
+        checkFormFields();
+
+
+        // TODO: sign the user in with email and password credentials
+        mAuth.signInWithEmailAndPassword(email, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
+                    currentUser = mAuth.getCurrentUser();
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+
+        });
     }
-
-
-
-//    private void signUserIn() {
-//        if (!checkFormFields())
-//            return;
-//
-//        String email = username.getText().toString();
-//        String passwordString = password.getText().toString();
-//
-//        // TODO: sign the user in with email and password credentials
-//        mAuth.signInWithEmailAndPassword(email, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if (task.isSuccessful()) {
-//                    Toast.makeText(LoginActivity.this, "Signed in", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
-//                }
-//                updateStatus();
-//            }
-//
-//
-//        });
-    //}
 }
 
 
