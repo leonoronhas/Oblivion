@@ -30,8 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
 
-
-//    //authentication FireBase
+    //Authentication FireBase
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
@@ -61,26 +60,24 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.editTextPassword);
         signOut = findViewById(R.id.signOutButton);
 
-
-
-        // Login button algorithm
+        // Login button call
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class); // redirected to main activity next
+                // Sign user
                 signUserIn();
 
                 startActivity(intent);
-
             }
 
         });
 
-        // Sign Up button algorithm
+        // Sign Up button call
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class); // redirected to main activity next
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class); // redirected to sign up activity next
                 startActivity(intent);
             }
         });
@@ -90,10 +87,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ForgotActivity.class); // redirected  to forgot activity
-
                 startActivity(intent);
-
-
             }
         });
 
@@ -103,11 +97,9 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
             }
         });
-
-
     }
 
-
+    // Check user input
     private boolean checkFormFields() {
         String email, passwordString;
 
@@ -122,27 +114,23 @@ public class LoginActivity extends AppCompatActivity {
             password.setError("Password Required");
             return false;
         }
-
+        // True if no issue was found
         return true;
     }
 
-
-
-
-
-
+    // Login user
     private void signUserIn() {
         if (!checkFormFields())
             return;
 
+        // Convert the inputs to strings
         String email = username.getText().toString();
         String passwordString = password.getText().toString();
 
-
+        // Check user input
         checkFormFields();
 
-
-        // TODO: sign the user in with email and password credentials
+        // Firebase sign in
         mAuth.signInWithEmailAndPassword(email, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -153,7 +141,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
 

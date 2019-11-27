@@ -26,12 +26,11 @@ public class SignUpActivity extends AppCompatActivity {
     EditText emailEditText;
     EditText passwordEditText;
     EditText confPassword;
-    boolean checkInput;
-    LoginActivity activity;
+    Intent intent;
 
     //authentication FireBase
     private FirebaseAuth mAuth;
-    //private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +48,9 @@ public class SignUpActivity extends AppCompatActivity {
 
         //Get a reference to the Firebase auth object
         mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
-        //Get inputs
+        //Get inputs from the view
         emailEditText = findViewById(R.id.emailInputEditText);
         passwordEditText = findViewById(R.id.editTextPassword);
         confPassword = findViewById(R.id.editTextConfirmPass);
@@ -60,37 +60,20 @@ public class SignUpActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent = new Intent(getApplicationContext(), MainActivity.class);
 
-                // Check for correct inputs before submitting
-//                checkFormFields();
-
-                // Create account
                 createUserAccount();
-
-                startActivity(intent);
             }
         });
-
-
-           //just testing database
-//
-//        FirebaseDatabase database;
-//        database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello, World!");
-
-   }
-
-
+    }
 
     // Create account
     private void createUserAccount() {
         if (!checkFormFields())
             return;
 
-        String emailString = emailEditText.getText().toString();
+        // Convert to strings
+        final String emailString = emailEditText.getText().toString();
         String passwordString = passwordEditText.getText().toString();
 
         //Create the user account
@@ -98,28 +81,32 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Account created successfully", Toast.LENGTH_SHORT).show();
-
-                    //FirebaseUser user = mAuth.getCurrentUser();
-
-                    // that allows  to go to the next activity or not...
-
-                    finish();
-                    checkInput = true;
-                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(),"Account created Successfully", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 500);
+                    toast.show();
+                    startActivity(intent);
+                }
+                // Handle same email address case
+                else if(currentUser.getEmail().equals(emailString)){
+                    Toast toast = Toast.makeText(getApplicationContext(),"Email already in use", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 500);
+                    toast.show();
+                }
+                else{
                     Toast.makeText(getApplicationContext(), "Account creation failed", Toast.LENGTH_SHORT).show();
-                    checkInput = false;
                 }
             }
         });
     }
 
+    // Check user input
     private boolean checkFormFields() {
 
         // Convert it to string
-        String emailString = emailEditText.getText().toString();
-        String passString = passwordEditText.getText().toString();
+        String emailString    = emailEditText.getText().toString();
+        String passString     = passwordEditText.getText().toString();
         String confPassString = confPassword.getText().toString();
+        int passwordSize = 6;
 
         // Check input fields for required information
         if (emailString.isEmpty()) {
@@ -130,15 +117,20 @@ public class SignUpActivity extends AppCompatActivity {
             passwordEditText.setError("Password Required");
             return false;
         }
+        if (passString.length() < passwordSize)
+            passwordEditText.setError("Password must have 6 characters or more");
         if (confPassString.isEmpty()) {
             confPassword.setError("Confirm Password Required");
             return false;
         }
+        if (!passString.equals(confPassString)) {
+            confPassword.setError("Password must match");
+            return false;
+        }
 
         // Check if password and conf password match
-        return confPassString.equals(passString);
+        return true;
     }
-
 
 
 }
