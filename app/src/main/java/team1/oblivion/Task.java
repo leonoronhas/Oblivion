@@ -4,7 +4,7 @@ public class Task {
 
     Speakers speakers;
 
-    Notes notes;
+    //Notes notes;
 
     Prayer prayer;
 
@@ -16,13 +16,13 @@ public class Task {
         this.speakers = speakers;
     }
 
-    public Notes getNotes() {
-        return notes;
-    }
+//    public Notes getNotes() {
+//        return notes;
+//    }
 
-    public void setNotes(Notes notes) {
-        this.notes = notes;
-    }
+//    public void setNotes(Notes notes) {
+//        this.notes = notes;
+//    }
 
     public Prayer getPrayer() {
         return prayer;
@@ -32,9 +32,9 @@ public class Task {
         this.prayer = prayer;
     }
 
-    public Task(Speakers speakers, Notes notes, Prayer prayer) {
+    public Task(Speakers speakers, Prayer prayer) {
         this.speakers = speakers;
-        this.notes = notes;
+//        this.notes = notes;
         this.prayer = prayer;
     }
 }

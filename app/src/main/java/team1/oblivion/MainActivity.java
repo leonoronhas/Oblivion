@@ -9,10 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
 
     // Switch between fragments
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -42,16 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // Get ids
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navi);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();
     }
-}
+
+
+

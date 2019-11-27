@@ -10,6 +10,8 @@ public class Meeting {
 
     Task task;
 
+    Notes notes;
+
     public DateTimeName getDateTimeName() {
         return dateTimeName;
     }
@@ -42,10 +44,12 @@ public class Meeting {
         this.task = task;
     }
 
-    public Meeting(DateTimeName dateTimeName, Conductors conductors, Hymn hymn, Task task) {
+    public Meeting(DateTimeName dateTimeName, Conductors conductors, Hymn hymn, Task task, Notes notes) {
         this.dateTimeName = dateTimeName;
-        this.conductors = conductors;
-        this.hymn = hymn;
-        this.task = task;
+        this.conductors   = conductors;
+        this.hymn         = hymn;
+        this.task         = task;
+        this.notes        = notes;
+
     }
 }

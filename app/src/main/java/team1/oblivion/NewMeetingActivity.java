@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,7 +20,10 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.google.common.base.MoreObjects;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.auth.User;
@@ -40,6 +44,8 @@ public class NewMeetingActivity extends AppCompatActivity {
     private int currentMinute;
     private String amPm;
 
+
+
     private EditText titleId;
     private EditText presidingId;
     private EditText conductingId;
@@ -58,6 +64,20 @@ public class NewMeetingActivity extends AppCompatActivity {
     private EditText thirdSpeakerId;
     ImageButton saveButton;
     ImageButton cancelButton;
+    DatabaseReference databaseMeeting;
+
+
+    DateTimeName dateTimeName;
+
+    Conductors conductors;
+
+    Hymn hymn;
+
+    Task task;
+
+    Notes notes;
+
+
 
     private ArrayAdapter<CharSequence> typeAdapter;
     private Spinner typeId;
@@ -99,7 +119,14 @@ public class NewMeetingActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.imageButtonSaveTemplate);
         cancelButton = findViewById(R.id.imageButtonCancelTemplate);
 
+        databaseMeeting = FirebaseDatabase.getInstance().getReference("newMeeting");
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveMeeting();
+            }
+        });
 
         // WE DON'T KNOW WHY IT DOESN'T WORK
 //        typeAdapter = ArrayAdapter.createFromResource(this,
@@ -113,7 +140,7 @@ public class NewMeetingActivity extends AppCompatActivity {
 
 
         // This will get the date in a calendar dialog
-        DisplayDate = (TextView) findViewById(R.id.selectDate);
+        DisplayDate = findViewById(R.id.selectDate);
         DisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -175,6 +202,8 @@ public class NewMeetingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+
 //                DatabaseReference usersRef = ref.child("users");
 //
 //                Map<String, String> users = new HashMap<>();
@@ -184,8 +213,77 @@ public class NewMeetingActivity extends AppCompatActivity {
 //                usersRef.setValueAsync(users);//
             }
         });
+
+
     }
 
+    // saving the meeting  on firebase
+    public void saveMeeting(){
+
+         String titleStr         = titleId.getText().toString().trim();
+         String presidingStr     = presidingId.getText().toString().trim();
+         String conductingStr    = conductingId.getText().toString().trim();
+         String openingHymnStr   = openingHymnId.getText().toString().trim();
+         String sacramentHymnStr = sacramentHymnId.getText().toString().trim();
+         String specialHymnStr   = specialHymnId.getText().toString().trim();
+         String closingHymnStr   = closingHymnId.getText().toString().trim();
+         String firstPrayerStr  = firstPrayerId.getText().toString().trim();
+         String secondPrayerStr  = secondPrayerId.getText().toString().trim();
+
+         String wardBusinessStr  = wardBusinessId.getText().toString().trim();
+         String notesStr         = notesId.getText().toString().trim();
+         String attendanceStr    = attendanceId.getText().toString().trim();
+         String firstSpeakerStr  = firstSpeakerId.getText().toString().trim();
+         String secondSpeakerStr = secondSpeakerId.getText().toString().trim();
+         String thirdSpeakerStr  = thirdSpeakerId.getText().toString().trim();
+
+
+         dateTimeName.setTitle(titleStr);
+         conductors.setConducting(conductingStr);
+         conductors.setPresiding(presidingStr);
+         hymn.setOpeningHymn(openingHymnStr);
+         hymn.setClosingHymn(closingHymnStr);
+         hymn.setSacramentHymn(sacramentHymnStr);
+         hymn.setSpecialHymn(specialHymnStr);
+         task.getPrayer().setfirstPrayer(firstPrayerStr);
+         task.getPrayer().setsecondPrayer(secondPrayerStr);
+         task.getSpeakers().setFirstSpeaker(firstSpeakerStr);
+         task.getSpeakers().setSecondSpeaker(secondSpeakerStr);
+         task.getSpeakers().setThirdSpeaker(thirdSpeakerStr);
+         notes.setNotes(notesStr);
+         notes.setWardBusiness(wardBusinessStr);
+
+
+
+
+
+         if(!TextUtils.isEmpty(titleStr) || !TextUtils.isEmpty(conductingStr) || !TextUtils.isEmpty(firstPrayerStr)
+                 || !TextUtils.isEmpty( secondPrayerStr)|| !TextUtils.isEmpty(presidingStr)){
+
+
+             // creating a  unique Id that will be stored in the database
+             // every time that a meeting is created tha will be an unique  id (meeting)
+             String id = databaseMeeting.push().getKey();
+
+
+
+               Meeting newMeeting = new Meeting(dateTimeName, conductors,  hymn, task, notes);
+//              NewMeetingActivity meeting = new NewMeetingActivity(id, titleStr, presidingStr, conductingStr,
+//              openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr, firstPrayerIStr, secondPrayerStr,
+//              wardBusinessStr,notesStr, attendanceStr,firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
+
+             // getting access to the database setting  the new meeting Object as a Value
+             databaseMeeting.child(id).setValue(newMeeting);
+             Toast.makeText(this, "Meeting created", Toast.LENGTH_SHORT).show();
+
+        }else{
+
+             Toast.makeText(this, "Please fill out all required inputs",Toast.LENGTH_SHORT).show();
+         }
+
+
+
+    }
 
 
 
