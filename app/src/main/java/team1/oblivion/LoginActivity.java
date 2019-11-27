@@ -26,13 +26,11 @@ public class LoginActivity extends AppCompatActivity {
     Button forgotPass;
     Button signUp;
     Button signOut;
-    private String TAG = "FA_SIGNIN";
+    Intent intent;
     private EditText username;
     private EditText password;
-
     //Authentication FireBase
     private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,25 +48,22 @@ public class LoginActivity extends AppCompatActivity {
 
         //Get a reference to the Firebase auth object
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
 
         // Assign inputs & buttons
         loginButton = findViewById(R.id.buttonLogin);
         forgotPass = findViewById(R.id.buttonForgotPassword);
         signUp = findViewById(R.id.buttonSignUp);
-        password = findViewById(R.id.editTextLogin);
-        username = findViewById(R.id.editTextPassword);
+        password = findViewById(R.id.editTextPassword);
+        username = findViewById(R.id.editTextLogin);
         signOut = findViewById(R.id.signOutButton);
 
         // Login button call
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class); // redirected to main activity next
+                intent = new Intent(getApplicationContext(), MainActivity.class); // redirected to main activity next
                 // Sign user
                 signUserIn();
-
-                startActivity(intent);
             }
 
         });
@@ -124,26 +119,24 @@ public class LoginActivity extends AppCompatActivity {
             return;
 
         // Convert the inputs to strings
-        String email = username.getText().toString();
+        final String email = username.getText().toString();
         String passwordString = password.getText().toString();
-
-        // Check user input
-        checkFormFields();
 
         // Firebase sign in
         mAuth.signInWithEmailAndPassword(email, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                    currentUser = mAuth.getCurrentUser();
-                    finish();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 100);
+                    toast.show();
+                    startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 100);
+                    toast.show();
                 }
             }
-
-
         });
     }
 }
