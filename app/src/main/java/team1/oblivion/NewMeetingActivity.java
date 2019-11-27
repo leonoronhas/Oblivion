@@ -12,13 +12,21 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.auth.User;
+
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NewMeetingActivity extends AppCompatActivity {
 
@@ -48,6 +56,8 @@ public class NewMeetingActivity extends AppCompatActivity {
     private EditText firstSpeakerId;
     private EditText secondSpeakerId;
     private EditText thirdSpeakerId;
+    ImageButton saveButton;
+    ImageButton cancelButton;
 
     private ArrayAdapter<CharSequence> typeAdapter;
     private Spinner typeId;
@@ -58,6 +68,18 @@ public class NewMeetingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_meeting);
 
+        View decorView = getWindow().getDecorView();
+
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
+        // Remember that you should never show the action bar if the
+        // status bar is hidden, so hide that too if necessary.
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+        // Get the inputs
         titleId = findViewById(R.id.editTextTitle);
         presidingId = findViewById(R.id.editTextPresiding);
         conductingId = findViewById(R.id.editTextConducting);
@@ -74,6 +96,9 @@ public class NewMeetingActivity extends AppCompatActivity {
         firstSpeakerId = findViewById(R.id.editTextFirstSpeaker);
         secondSpeakerId = findViewById(R.id.editTextSecondSpeaker);
         thirdSpeakerId = findViewById(R.id.editTextThirdSpeaker);
+        saveButton = findViewById(R.id.imageButtonSaveTemplate);
+        cancelButton = findViewById(R.id.imageButtonCancelTemplate);
+
 
 
         // WE DON'T KNOW WHY IT DOESN'T WORK
@@ -84,16 +109,7 @@ public class NewMeetingActivity extends AppCompatActivity {
 
 
         /********************************************************************************************/
-        View decorView = getWindow().getDecorView();
 
-        // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
 
         // This will get the date in a calendar dialog
@@ -153,6 +169,22 @@ public class NewMeetingActivity extends AppCompatActivity {
 
         /*************************************************************************************************/
 
+
+        // Button call
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                DatabaseReference usersRef = ref.child("users");
+//
+//                Map<String, String> users = new HashMap<>();
+//                users.put("alanisawesome", new User("June 23, 1912", "Alan Turing"));
+//                users.put("gracehop", new User("December 9, 1906", "Grace Hopper"));
+//
+//                usersRef.setValueAsync(users);
+
+            }
+        });
     }
 
 
