@@ -35,17 +35,21 @@ import java.util.Map;
 public class NewMeetingActivity extends AppCompatActivity {
 
     private final static String TAG = "NewMeetingActivity";
+    ImageButton saveButton;
+    ImageButton cancelButton;
+    DatabaseReference databaseMeeting;
+    DateTimeName dateTimeName;
+    Conductors conductors;
+    Hymn hymn;
+    Task task;
+    Notes notes;
     private TextView DisplayDate;
     private DatePickerDialog.OnDateSetListener DateSetListener;
-
     private TextView displayTime;
     private TimePickerDialog timePickerDialog;
     private int currentHour;
     private int currentMinute;
     private String amPm;
-
-
-
     private EditText titleId;
     private EditText presidingId;
     private EditText conductingId;
@@ -55,30 +59,13 @@ public class NewMeetingActivity extends AppCompatActivity {
     private EditText closingHymnId;
     private EditText firstPrayerId;
     private EditText secondPrayerId;
-//    private EditText specialPrayerId;
+    //    private EditText specialPrayerId;
     private EditText wardBusinessId;
     private EditText notesId;
     private EditText attendanceId;
     private EditText firstSpeakerId;
     private EditText secondSpeakerId;
     private EditText thirdSpeakerId;
-    ImageButton saveButton;
-    ImageButton cancelButton;
-    DatabaseReference databaseMeeting;
-
-
-    DateTimeName dateTimeName;
-
-    Conductors conductors;
-
-    Hymn hymn;
-
-    Task task;
-
-    Notes notes;
-
-
-
     private ArrayAdapter<CharSequence> typeAdapter;
     private Spinner typeId;
 
@@ -138,7 +125,6 @@ public class NewMeetingActivity extends AppCompatActivity {
         /********************************************************************************************/
 
 
-
         // This will get the date in a calendar dialog
         DisplayDate = findViewById(R.id.selectDate);
         DisplayDate.setOnClickListener(new View.OnClickListener() {
@@ -158,8 +144,8 @@ public class NewMeetingActivity extends AppCompatActivity {
         DateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-            String date = month + "/" + day + "/" + year;
-            DisplayDate.setText(date);
+                String date = month + "/" + day + "/" + year;
+                DisplayDate.setText(date);
             }
         };
 
@@ -188,7 +174,7 @@ public class NewMeetingActivity extends AppCompatActivity {
 
                         displayTime.setText(hourOfDay + ":" + minute + " " + amPm);
                     }
-                }, currentHour,currentMinute,false);
+                }, currentHour, currentMinute, false);
                 timePickerDialog.show();
 
             }
@@ -211,6 +197,7 @@ public class NewMeetingActivity extends AppCompatActivity {
 //                users.put("gracehop", new User("December 9, 1906", "Grace Hopper"));
 //
 //                usersRef.setValueAsync(users);//
+                saveMeeting();
             }
         });
 
@@ -218,75 +205,74 @@ public class NewMeetingActivity extends AppCompatActivity {
     }
 
     // saving the meeting  on firebase
-    public void saveMeeting(){
+    public void saveMeeting() {
 
-         String titleStr         = titleId.getText().toString().trim();
-         String presidingStr     = presidingId.getText().toString().trim();
-         String conductingStr    = conductingId.getText().toString().trim();
-         String openingHymnStr   = openingHymnId.getText().toString().trim();
-         String sacramentHymnStr = sacramentHymnId.getText().toString().trim();
-         String specialHymnStr   = specialHymnId.getText().toString().trim();
-         String closingHymnStr   = closingHymnId.getText().toString().trim();
-         String firstPrayerStr  = firstPrayerId.getText().toString().trim();
-         String secondPrayerStr  = secondPrayerId.getText().toString().trim();
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
 
-         String wardBusinessStr  = wardBusinessId.getText().toString().trim();
-         String notesStr         = notesId.getText().toString().trim();
-         String attendanceStr    = attendanceId.getText().toString().trim();
-         String firstSpeakerStr  = firstSpeakerId.getText().toString().trim();
-         String secondSpeakerStr = secondSpeakerId.getText().toString().trim();
-         String thirdSpeakerStr  = thirdSpeakerId.getText().toString().trim();
+        myRef.setValue("Hello, World!");
 
+        String titleStr = titleId.getText().toString().trim();
+        String presidingStr = presidingId.getText().toString().trim();
+        String conductingStr = conductingId.getText().toString().trim();
+        String openingHymnStr = openingHymnId.getText().toString().trim();
+        String sacramentHymnStr = sacramentHymnId.getText().toString().trim();
+        String specialHymnStr = specialHymnId.getText().toString().trim();
+        String closingHymnStr = closingHymnId.getText().toString().trim();
+        String firstPrayerStr = firstPrayerId.getText().toString().trim();
+        String secondPrayerStr = secondPrayerId.getText().toString().trim();
 
-         dateTimeName.setTitle(titleStr);
-         conductors.setConducting(conductingStr);
-         conductors.setPresiding(presidingStr);
-         hymn.setOpeningHymn(openingHymnStr);
-         hymn.setClosingHymn(closingHymnStr);
-         hymn.setSacramentHymn(sacramentHymnStr);
-         hymn.setSpecialHymn(specialHymnStr);
-         task.getPrayer().setfirstPrayer(firstPrayerStr);
-         task.getPrayer().setsecondPrayer(secondPrayerStr);
-         task.getSpeakers().setFirstSpeaker(firstSpeakerStr);
-         task.getSpeakers().setSecondSpeaker(secondSpeakerStr);
-         task.getSpeakers().setThirdSpeaker(thirdSpeakerStr);
-         notes.setNotes(notesStr);
-         notes.setWardBusiness(wardBusinessStr);
+        String wardBusinessStr = wardBusinessId.getText().toString().trim();
+        String notesStr = notesId.getText().toString().trim();
+        String attendanceStr = attendanceId.getText().toString().trim();
+        String firstSpeakerStr = firstSpeakerId.getText().toString().trim();
+        String secondSpeakerStr = secondSpeakerId.getText().toString().trim();
+        String thirdSpeakerStr = thirdSpeakerId.getText().toString().trim();
 
 
+        dateTimeName.setTitle(titleStr);
+        conductors.setConducting(conductingStr);
+        conductors.setPresiding(presidingStr);
+        hymn.setOpeningHymn(openingHymnStr);
+        hymn.setClosingHymn(closingHymnStr);
+        hymn.setSacramentHymn(sacramentHymnStr);
+        hymn.setSpecialHymn(specialHymnStr);
+        task.getPrayer().setfirstPrayer(firstPrayerStr);
+        task.getPrayer().setsecondPrayer(secondPrayerStr);
+        task.getSpeakers().setFirstSpeaker(firstSpeakerStr);
+        task.getSpeakers().setSecondSpeaker(secondSpeakerStr);
+        task.getSpeakers().setThirdSpeaker(thirdSpeakerStr);
+        notes.setNotes(notesStr);
+        notes.setWardBusiness(wardBusinessStr);
 
 
-
-         if(!TextUtils.isEmpty(titleStr) || !TextUtils.isEmpty(conductingStr) || !TextUtils.isEmpty(firstPrayerStr)
-                 || !TextUtils.isEmpty( secondPrayerStr)|| !TextUtils.isEmpty(presidingStr)){
-
-
-             // creating a  unique Id that will be stored in the database
-             // every time that a meeting is created tha will be an unique  id (meeting)
-             String id = databaseMeeting.push().getKey();
-
-
-
-               Meeting newMeeting = new Meeting(dateTimeName, conductors,  hymn, task, notes);
-//              NewMeetingActivity meeting = new NewMeetingActivity(id, titleStr, presidingStr, conductingStr,
-//              openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr, firstPrayerIStr, secondPrayerStr,
-//              wardBusinessStr,notesStr, attendanceStr,firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
-
-             // getting access to the database setting  the new meeting Object as a Value
-             databaseMeeting.child(id).setValue(newMeeting);
-             Toast.makeText(this, "Meeting created", Toast.LENGTH_SHORT).show();
-
-        }else{
-
-             Toast.makeText(this, "Please fill out all required inputs",Toast.LENGTH_SHORT).show();
-         }
-
+//        if (!TextUtils.isEmpty(titleStr) || !TextUtils.isEmpty(conductingStr) || !TextUtils.isEmpty(firstPrayerStr)
+//                || !TextUtils.isEmpty(secondPrayerStr) || !TextUtils.isEmpty(presidingStr)) {
+//
+//
+//            // creating a  unique Id that will be stored in the database
+//            // every time that a meeting is created tha will be an unique  id (meeting)
+//            String id = databaseMeeting.push().getKey();
+//
+//
+//            Meeting newMeeting = new Meeting(dateTimeName, conductors, hymn, task, notes);
+////              NewMeetingActivity meeting = new NewMeetingActivity(id, titleStr, presidingStr, conductingStr,
+////              openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr, firstPrayerIStr, secondPrayerStr,
+////              wardBusinessStr,notesStr, attendanceStr,firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
+//
+//            // getting access to the database setting  the new meeting Object as a Value
+//            databaseMeeting.child(id).setValue(newMeeting);
+//            Toast.makeText(this, "Meeting created", Toast.LENGTH_SHORT).show();
+//
+//        } else {
+//
+//            Toast.makeText(this, "Please fill out all required inputs", Toast.LENGTH_SHORT).show();
+//        }
 
 
     }
 
 
-
-
-
 }
+
