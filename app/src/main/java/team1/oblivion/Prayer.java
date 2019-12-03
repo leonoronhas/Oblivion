@@ -6,7 +6,6 @@ public class Prayer {
 
     String secondPrayer;
 
-    String specialPrayer;
 
     public String getfirstPrayer() {
         return firstPrayer;
@@ -24,17 +23,9 @@ public class Prayer {
         this.secondPrayer = secondPrayer;
     }
 
-    public String getSpecialPrayer() {
-        return specialPrayer;
-    }
 
-    public void setSpecialPrayer(String specialPrayer) {
-        this.specialPrayer = specialPrayer;
-    }
-
-    public Prayer(String firstPrayer, String secondPrayer, String specialPrayer) {
+    public Prayer(String firstPrayer, String secondPrayer) {
         this.firstPrayer = firstPrayer;
         this.secondPrayer = secondPrayer;
-        this.specialPrayer = specialPrayer;
     }
 }

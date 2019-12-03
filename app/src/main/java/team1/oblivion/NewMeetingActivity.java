@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,6 +24,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.common.base.MoreObjects;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,7 +39,7 @@ public class NewMeetingActivity extends AppCompatActivity {
     private final static String TAG = "NewMeetingActivity";
     ImageButton saveButton;
     ImageButton cancelButton;
-    DatabaseReference databaseMeeting;
+    DatabaseReference databaseReference;
     DateTimeName dateTimeName;
     Conductors conductors;
     Hymn hymn;
@@ -69,6 +71,7 @@ public class NewMeetingActivity extends AppCompatActivity {
     private ArrayAdapter<CharSequence> typeAdapter;
     private Spinner typeId;
 
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +109,13 @@ public class NewMeetingActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.imageButtonSaveTemplate);
         cancelButton = findViewById(R.id.imageButtonCancelTemplate);
 
-        databaseMeeting = FirebaseDatabase.getInstance().getReference("newMeeting");
+        databaseReference = FirebaseDatabase.getInstance().getReference("newMeeting");
+
+
+
+        // trying to dismiss window after meeting is saved
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Saving...");
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,16 +196,6 @@ public class NewMeetingActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-
-//                DatabaseReference usersRef = ref.child("users");
-//
-//                Map<String, String> users = new HashMap<>();
-//                users.put("alanisawesome", new User("June 23, 1912", "Alan Turing"));
-//                users.put("gracehop", new User("December 9, 1906", "Grace Hopper"));
-//
-//                usersRef.setValueAsync(users);//
                 saveMeeting();
             }
         });
@@ -207,12 +206,7 @@ public class NewMeetingActivity extends AppCompatActivity {
     // saving the meeting  on firebase
     public void saveMeeting() {
 
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello, World!");
-
+        String id = databaseReference.push().getKey();
         String titleStr = titleId.getText().toString().trim();
         String presidingStr = presidingId.getText().toString().trim();
         String conductingStr = conductingId.getText().toString().trim();
@@ -230,46 +224,25 @@ public class NewMeetingActivity extends AppCompatActivity {
         String secondSpeakerStr = secondSpeakerId.getText().toString().trim();
         String thirdSpeakerStr = thirdSpeakerId.getText().toString().trim();
 
+        progressDialog.show();
 
-        dateTimeName.setTitle(titleStr);
-        conductors.setConducting(conductingStr);
-        conductors.setPresiding(presidingStr);
-        hymn.setOpeningHymn(openingHymnStr);
-        hymn.setClosingHymn(closingHymnStr);
-        hymn.setSacramentHymn(sacramentHymnStr);
-        hymn.setSpecialHymn(specialHymnStr);
-        task.getPrayer().setfirstPrayer(firstPrayerStr);
-        task.getPrayer().setsecondPrayer(secondPrayerStr);
-        task.getSpeakers().setFirstSpeaker(firstSpeakerStr);
-        task.getSpeakers().setSecondSpeaker(secondSpeakerStr);
-        task.getSpeakers().setThirdSpeaker(thirdSpeakerStr);
-        notes.setNotes(notesStr);
-        notes.setWardBusiness(wardBusinessStr);
+        Conductors conductors = new Conductors(presidingStr, conductingStr);
+        Hymn hymns = new Hymn(openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr);
+        Speakers speakers = new Speakers(firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
+        Prayer prayer = new Prayer(firstPrayerStr, secondPrayerStr);
+        Notes notes = new Notes(notesStr, wardBusinessStr);
 
+        databaseReference.child("Title").setValue(titleStr);
+        databaseReference.child("Conductors").setValue(conductors);
+        databaseReference.child("Hymns").setValue(hymns);
+        databaseReference.child("Speakers").setValue(speakers);
+        databaseReference.child("Prayer").setValue(prayer);
+        databaseReference.child("Notes").setValue(notes);
 
-//        if (!TextUtils.isEmpty(titleStr) || !TextUtils.isEmpty(conductingStr) || !TextUtils.isEmpty(firstPrayerStr)
-//                || !TextUtils.isEmpty(secondPrayerStr) || !TextUtils.isEmpty(presidingStr)) {
-//
-//
-//            // creating a  unique Id that will be stored in the database
-//            // every time that a meeting is created tha will be an unique  id (meeting)
-//            String id = databaseMeeting.push().getKey();
-//
-//
-//            Meeting newMeeting = new Meeting(dateTimeName, conductors, hymn, task, notes);
-////              NewMeetingActivity meeting = new NewMeetingActivity(id, titleStr, presidingStr, conductingStr,
-////              openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr, firstPrayerIStr, secondPrayerStr,
-////              wardBusinessStr,notesStr, attendanceStr,firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
-//
-//            // getting access to the database setting  the new meeting Object as a Value
-//            databaseMeeting.child(id).setValue(newMeeting);
-//            Toast.makeText(this, "Meeting created", Toast.LENGTH_SHORT).show();
-//
-//        } else {
-//
-//            Toast.makeText(this, "Please fill out all required inputs", Toast.LENGTH_SHORT).show();
-//        }
-
+        progressDialog.dismiss();
+        Toast.makeText(this,"New Meeting Saved Successfully",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
 
     }
 
