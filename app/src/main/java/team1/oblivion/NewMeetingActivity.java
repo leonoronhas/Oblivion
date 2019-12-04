@@ -48,8 +48,9 @@ public class NewMeetingActivity extends AppCompatActivity {
     Prayer prayers;
     Notes notes;
     String date;
+    String timeTest;
 
-    // Date and time
+    // Date and time pickers
     private TextView DisplayDate;
     private DatePickerDialog.OnDateSetListener DateSetListener;
     private TextView displayTime;
@@ -69,11 +70,11 @@ public class NewMeetingActivity extends AppCompatActivity {
     private EditText firstPrayerId;
     private EditText secondPrayerId;
     private EditText wardBusinessId;
-    private EditText notesId;
     private EditText attendanceId;
     private EditText firstSpeakerId;
     private EditText secondSpeakerId;
     private EditText thirdSpeakerId;
+    private EditText notesId;
     ImageButton saveButton;
     ImageButton cancelButton;
 
@@ -115,7 +116,7 @@ public class NewMeetingActivity extends AppCompatActivity {
         // Get the Firebase instance (Create parent)
         databaseReference = FirebaseDatabase.getInstance().getReference("newMeeting");
 
-        /********************************************************************************************
+         /******************************************************************************************
          *  Android Date picker - Specific to android
          *  This will get the date in a calendar dialog
          *******************************************************************************************/
@@ -128,9 +129,10 @@ public class NewMeetingActivity extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(NewMeetingActivity.this, android.R.style.Theme_Holo_Light_Dialog, DateSetListener, year, month, day);
+                DatePickerDialog dialog = new DatePickerDialog(NewMeetingActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog, DateSetListener, year, month, day);
 
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(50, 25, 87)));
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(50, 25, 87))); // primary color
                 dialog.show();
             }
         });
@@ -142,7 +144,7 @@ public class NewMeetingActivity extends AppCompatActivity {
             }
         };
 
-        /********************************************************************************************
+         /******************************************************************************************
          *  Android Time picker - Specific to android
          *  This will choose the time
          *******************************************************************************************/
@@ -163,7 +165,9 @@ public class NewMeetingActivity extends AppCompatActivity {
                         } else {
                             amPm = "AM";
                         }
-                        displayTime.setText(hourOfDay + ":" + minute + " " + amPm);
+                        String time = hourOfDay + ":" + minute + " " + amPm;
+                        timeTest = time;
+                        displayTime.setText(time);
                     }
                 }, currentHour, currentMinute, false);
                 timePickerDialog.show();
@@ -185,6 +189,7 @@ public class NewMeetingActivity extends AppCompatActivity {
 
         String id = databaseReference.push().getKey();
 
+        // Convert inputs to strings
         String titleStr = titleId.getText().toString().trim();
         String presidingStr = presidingId.getText().toString().trim();
         String conductingStr = conductingId.getText().toString().trim();
@@ -195,13 +200,13 @@ public class NewMeetingActivity extends AppCompatActivity {
         String firstPrayerStr = firstPrayerId.getText().toString().trim();
         String secondPrayerStr = secondPrayerId.getText().toString().trim();
         String wardBusinessStr = wardBusinessId.getText().toString().trim();
-        String notesStr = notesId.getText().toString().trim();
         String attendanceStr = attendanceId.getText().toString().trim();
         String firstSpeakerStr = firstSpeakerId.getText().toString().trim();
         String secondSpeakerStr = secondSpeakerId.getText().toString().trim();
         String thirdSpeakerStr = thirdSpeakerId.getText().toString().trim();
+        String notesStr = notesId.getText().toString().trim();
         String dateStr = date;
-        String timeStr = timePickerDialog.toString();
+        String timeStr = timeTest;
 
         // Assign each string to its class
         conductors = new Conductors(presidingStr, conductingStr);
@@ -220,6 +225,7 @@ public class NewMeetingActivity extends AppCompatActivity {
         databaseReference.child("Notes").setValue(notes);
         databaseReference.child("Attendance").setValue(attendanceStr);
 
+        // Display if created successfully
         Toast.makeText(this,"New Meeting Saved Successfully",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(intent);

@@ -36,4 +36,8 @@ public class DateTimeName {
         this.time = time;
         this.date = date;
     }
+
+    public String toString(){
+        return date + " " + time;
+    }
 }

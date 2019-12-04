@@ -4,8 +4,6 @@ public class Task {
 
     Speakers speakers;
 
-    //Notes notes;
-
     Prayer prayer;
 
     public Speakers getSpeakers() {
@@ -15,14 +13,6 @@ public class Task {
     public void setSpeakers(Speakers speakers) {
         this.speakers = speakers;
     }
-
-//    public Notes getNotes() {
-//        return notes;
-//    }
-
-//    public void setNotes(Notes notes) {
-//        this.notes = notes;
-//    }
 
     public Prayer getPrayer() {
         return prayer;

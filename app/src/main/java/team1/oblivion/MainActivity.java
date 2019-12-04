@@ -16,7 +16,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-
     // Switch between fragments
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Get ids
+        // Get ids and set toolbar
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navi);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
