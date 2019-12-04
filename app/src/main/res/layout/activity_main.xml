@@ -20,8 +20,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-3dp"
         android:background="@color/colorPrimary"
-        app:itemIconTint="@color/cardview_light_background"
-        app:itemTextColor="@color/cardview_light_background"
+        app:itemIconTint="@android:color/background_light"
+        app:itemTextColor="@android:color/background_light"
         app:menu="@menu/bottom_navi" />
 
 </RelativeLayout>

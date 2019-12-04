@@ -14,6 +14,7 @@
     <string name="buttom_recover_id">Recover</string>
     <string name="recover_email_id">Email</string>
     <string name="create_meeting_button">create a new meeting button</string>
+    <string name="oblivion_logo">Oblivion logo</string>
     <string name="title_input">Title</string>
     <string name="date_input">Date</string>
     <string name="time_input">Time</string>
@@ -35,5 +36,9 @@
     <string name="save_new_meeting_button">Save New Meeting Button</string>
     <string name="remove_warning_button">blank</string>
     <string name="splash_screen_logo">Oblivion Logo initial screen</string>
+    <string name="calendar_view">Calendar</string>
+    <string name="meeting_text_view">Meetings</string>
+    <string name="task_view">Tasks</string>
+    <string name="reports_view">Reports</string>
 </resources>
 

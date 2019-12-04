@@ -114,7 +114,7 @@ public class NewMeetingActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.imageButtonCancelTemplate);
 
         // Get the Firebase instance (Create parent)
-        databaseReference = FirebaseDatabase.getInstance().getReference("newMeeting");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Meetings");
 
          /******************************************************************************************
          *  Android Date picker - Specific to android
@@ -144,7 +144,7 @@ public class NewMeetingActivity extends AppCompatActivity {
             }
         };
 
-         /******************************************************************************************
+         /****************************************************************************************
          *  Android Time picker - Specific to android
          *  This will choose the time
          *******************************************************************************************/
@@ -217,6 +217,7 @@ public class NewMeetingActivity extends AppCompatActivity {
         dateTimeName = new DateTimeName(titleStr, timeStr, dateStr);
 
         // Send it to database under "newMeeting"
+        databaseReference = databaseReference.push();
         databaseReference.child("DateTimeTitle").setValue(dateTimeName);
         databaseReference.child("Conductors").setValue(conductors);
         databaseReference.child("Hymns").setValue(hymns);

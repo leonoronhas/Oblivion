@@ -85,6 +85,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
         android:layout_marginBottom="11dp"
+        android:contentDescription="@string/oblivion_logo"
         app:layout_constraintBottom_toTopOf="@+id/emailInputEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

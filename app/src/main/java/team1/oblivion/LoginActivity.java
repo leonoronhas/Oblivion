@@ -56,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
         signUp = findViewById(R.id.buttonSignUp);
         password = findViewById(R.id.editTextPassword);
         username = findViewById(R.id.editTextLogin);
-        signOut = findViewById(R.id.signOutButton);
 
         // Login button call
         loginButton.setOnClickListener(new View.OnClickListener() {
