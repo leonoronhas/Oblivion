@@ -36,15 +36,20 @@ import java.util.Map;
 
 public class NewMeetingActivity extends AppCompatActivity {
 
-    private final static String TAG = "NewMeetingActivity";
-    ImageButton saveButton;
-    ImageButton cancelButton;
+    // Firebase
     DatabaseReference databaseReference;
+
+    // Create objects
     DateTimeName dateTimeName;
     Conductors conductors;
-    Hymn hymn;
-    Task task;
+    Hymn hymns;
+    Speakers speakers;
+    Task tasks;
+    Prayer prayers;
     Notes notes;
+    String date;
+
+    // Date and time
     private TextView DisplayDate;
     private DatePickerDialog.OnDateSetListener DateSetListener;
     private TextView displayTime;
@@ -52,6 +57,8 @@ public class NewMeetingActivity extends AppCompatActivity {
     private int currentHour;
     private int currentMinute;
     private String amPm;
+
+    // Inputs
     private EditText titleId;
     private EditText presidingId;
     private EditText conductingId;
@@ -61,17 +68,14 @@ public class NewMeetingActivity extends AppCompatActivity {
     private EditText closingHymnId;
     private EditText firstPrayerId;
     private EditText secondPrayerId;
-    //    private EditText specialPrayerId;
     private EditText wardBusinessId;
     private EditText notesId;
     private EditText attendanceId;
     private EditText firstSpeakerId;
     private EditText secondSpeakerId;
     private EditText thirdSpeakerId;
-    private ArrayAdapter<CharSequence> typeAdapter;
-    private Spinner typeId;
-
-    ProgressDialog progressDialog;
+    ImageButton saveButton;
+    ImageButton cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +103,6 @@ public class NewMeetingActivity extends AppCompatActivity {
         closingHymnId = findViewById(R.id.editTextClosingHymn);
         firstPrayerId = findViewById(R.id.editTextInvocation);
         secondPrayerId = findViewById(R.id.editTextBenediction);
-//        specialPrayerId = findViewById(R.id.editTextSpecialPrayerId);
         wardBusinessId = findViewById(R.id.editTextWardBusiness);
         notesId = findViewById(R.id.editTextNotes);
         attendanceId = findViewById(R.id.editTextAttendance);
@@ -109,32 +112,13 @@ public class NewMeetingActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.imageButtonSaveTemplate);
         cancelButton = findViewById(R.id.imageButtonCancelTemplate);
 
+        // Get the Firebase instance (Create parent)
         databaseReference = FirebaseDatabase.getInstance().getReference("newMeeting");
 
-
-
-        // trying to dismiss window after meeting is saved
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Saving...");
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveMeeting();
-            }
-        });
-
-        // WE DON'T KNOW WHY IT DOESN'T WORK
-//        typeAdapter = ArrayAdapter.createFromResource(this,
-//                R.array.meeting_type, android.R.layout.simple_spinner_item);
-//        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        typeId.setAdapter(typeAdapter);
-
-
-        /********************************************************************************************/
-
-
-        // This will get the date in a calendar dialog
+        /********************************************************************************************
+         *  Android Date picker - Specific to android
+         *  This will get the date in a calendar dialog
+         *******************************************************************************************/
         DisplayDate = findViewById(R.id.selectDate);
         DisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,15 +137,15 @@ public class NewMeetingActivity extends AppCompatActivity {
         DateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                String date = month + "/" + day + "/" + year;
+                date = month + "/" + day + "/" + year;
                 DisplayDate.setText(date);
             }
         };
 
-        /********************************************************************************************/
-
-        // This will choose the time
-
+        /********************************************************************************************
+         *  Android Time picker - Specific to android
+         *  This will choose the time
+         *******************************************************************************************/
         displayTime = findViewById(R.id.selectTime);
         displayTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,7 +153,6 @@ public class NewMeetingActivity extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 currentHour = calendar.get(Calendar.HOUR_OF_DAY);
                 currentMinute = calendar.get(Calendar.MINUTE);
-
 
                 timePickerDialog = new TimePickerDialog(NewMeetingActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
@@ -180,33 +163,28 @@ public class NewMeetingActivity extends AppCompatActivity {
                         } else {
                             amPm = "AM";
                         }
-
                         displayTime.setText(hourOfDay + ":" + minute + " " + amPm);
                     }
                 }, currentHour, currentMinute, false);
                 timePickerDialog.show();
-
             }
         });
 
-        /*************************************************************************************************/
 
-
-        // Button call
+        // Button call inside onCreate()
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveMeeting();
             }
         });
-
-
     }
 
-    // saving the meeting  on firebase
+    // Saving the meeting  on Firebase
     public void saveMeeting() {
 
         String id = databaseReference.push().getKey();
+
         String titleStr = titleId.getText().toString().trim();
         String presidingStr = presidingId.getText().toString().trim();
         String conductingStr = conductingId.getText().toString().trim();
@@ -216,36 +194,35 @@ public class NewMeetingActivity extends AppCompatActivity {
         String closingHymnStr = closingHymnId.getText().toString().trim();
         String firstPrayerStr = firstPrayerId.getText().toString().trim();
         String secondPrayerStr = secondPrayerId.getText().toString().trim();
-
         String wardBusinessStr = wardBusinessId.getText().toString().trim();
         String notesStr = notesId.getText().toString().trim();
         String attendanceStr = attendanceId.getText().toString().trim();
         String firstSpeakerStr = firstSpeakerId.getText().toString().trim();
         String secondSpeakerStr = secondSpeakerId.getText().toString().trim();
         String thirdSpeakerStr = thirdSpeakerId.getText().toString().trim();
+        String dateStr = date;
+        String timeStr = timePickerDialog.toString();
 
-        progressDialog.show();
+        // Assign each string to its class
+        conductors = new Conductors(presidingStr, conductingStr);
+        hymns = new Hymn(openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr);
+        speakers = new Speakers(firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
+        prayers = new Prayer(firstPrayerStr, secondPrayerStr);
+        notes = new Notes(notesStr, wardBusinessStr);
+        dateTimeName = new DateTimeName(titleStr, timeStr, dateStr);
 
-        Conductors conductors = new Conductors(presidingStr, conductingStr);
-        Hymn hymns = new Hymn(openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr);
-        Speakers speakers = new Speakers(firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
-        Prayer prayer = new Prayer(firstPrayerStr, secondPrayerStr);
-        Notes notes = new Notes(notesStr, wardBusinessStr);
-
-        databaseReference.child("Title").setValue(titleStr);
+        // Send it to database under "newMeeting"
+        databaseReference.child("DateTimeTitle").setValue(dateTimeName);
         databaseReference.child("Conductors").setValue(conductors);
         databaseReference.child("Hymns").setValue(hymns);
         databaseReference.child("Speakers").setValue(speakers);
-        databaseReference.child("Prayer").setValue(prayer);
+        databaseReference.child("Prayer").setValue(prayers);
         databaseReference.child("Notes").setValue(notes);
+        databaseReference.child("Attendance").setValue(attendanceStr);
 
-        progressDialog.dismiss();
         Toast.makeText(this,"New Meeting Saved Successfully",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(intent);
-
     }
-
-
 }
 
