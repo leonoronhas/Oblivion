@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "917238972015-u8lp3i9okj9n8efcfjum5imh0j28ag2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "team1.oblivion",
+            "certificate_hash": "af3b8381b1e25c49ad6ca5e6efc763001ac37aa1"
+          }
+        },
+        {
           "client_id": "917238972015-qr1qrbrcqcova0ukqr9frsegqqi040mv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
