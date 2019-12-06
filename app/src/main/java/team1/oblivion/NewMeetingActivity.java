@@ -129,8 +129,9 @@ public class NewMeetingActivity extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+                // Theme: Theme_Holo_Light_Dialog -- Theme_DeviceDefault_Dialog_MinWidth
                 DatePickerDialog dialog = new DatePickerDialog(NewMeetingActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog, DateSetListener, year, month, day);
+                        android.R.style.Theme_DeviceDefault_Panel, DateSetListener, year, month, day);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(50, 25, 87))); // primary color
                 dialog.show();
