@@ -20,9 +20,7 @@ import androidx.fragment.app.Fragment;
 public class HomeFragment extends Fragment {
 
     private View rootView;
-//    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-//    final DatabaseReference meeting_user = database.getReference("Meetings");
 
     @Nullable
     @Override
@@ -39,21 +37,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-//        meeting_user.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    String title = ds.child("DateTimeTitle").child("title").getValue().toString();
-//                    String date = ds.child("DateTimeTitle").child("date").getValue().toString();
-//                    String time = ds.child("DateTimeTitle").child("time").getValue().toString();
-//                }
-//            }
-
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-//            }
-//        });
 
         return rootView;
     }
