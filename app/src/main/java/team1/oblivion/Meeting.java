@@ -52,4 +52,8 @@ public class Meeting {
         this.notes        = notes;
 
     }
+
+    public void MeetingData(DateTimeName dateTimeName, Conductors conductors, Hymn hymn, Task task, Notes notes){
+
+    }
 }

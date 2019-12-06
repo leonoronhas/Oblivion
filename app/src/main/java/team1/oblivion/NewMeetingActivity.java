@@ -33,6 +33,7 @@ import com.google.firebase.firestore.auth.User;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class NewMeetingActivity extends AppCompatActivity {
 
@@ -92,7 +93,9 @@ public class NewMeetingActivity extends AppCompatActivity {
         // Remember that you should never show the action bar if the
         // status bar is hidden, so hide that too if necessary.
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         // Get the inputs
         titleId = findViewById(R.id.editTextTitle);
@@ -133,7 +136,7 @@ public class NewMeetingActivity extends AppCompatActivity {
                 DatePickerDialog dialog = new DatePickerDialog(NewMeetingActivity.this,
                         android.R.style.Theme_DeviceDefault_Panel, DateSetListener, year, month, day);
 
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(50, 25, 87))); // primary color
+                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.rgb(50, 25, 87))); // primary color
                 dialog.show();
             }
         });

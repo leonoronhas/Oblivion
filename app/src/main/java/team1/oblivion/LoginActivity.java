@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         signUp = findViewById(R.id.buttonSignUp);
         password = findViewById(R.id.editTextPassword);
         username = findViewById(R.id.editTextLogin);
+        progressBar = findViewById(R.id.progressBar);
 
         // Login button call
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    progressBar.setVisibility(View.VISIBLE);
                     Toast toast = Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER, 0, 100);
                     toast.show();

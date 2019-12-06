@@ -31,7 +31,7 @@ public class MeetingList {
                         try {
                             HashMap<String, Object> meetingData = (HashMap<String, Object>) data;
 
-                            Meeting meeting = new Meeting((String) meetingData.get("meeting"));
+                            //Meeting meeting = new Meeting((String) meetingData.get("meeting"));
 
 
                         }
@@ -46,7 +46,7 @@ public class MeetingList {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        })
+        });
     }
 
 
