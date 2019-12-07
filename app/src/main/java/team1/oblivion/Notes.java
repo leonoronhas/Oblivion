@@ -6,6 +6,16 @@ public class Notes {
 
     String wardBusiness;
 
+    String attendance;
+
+    public String getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(String attendance) {
+        this.attendance = attendance;
+    }
+
     public String getNotes() {
         return notes;
     }
@@ -22,8 +32,12 @@ public class Notes {
         this.wardBusiness = wardBusiness;
     }
 
-    public Notes(String notes, String wardBusiness) {
+
+
+    //constructor
+    public Notes(String notes, String wardBusiness, String attendance) {
         this.notes = notes;
+        this.attendance = attendance;
         this.wardBusiness = wardBusiness;
     }
 

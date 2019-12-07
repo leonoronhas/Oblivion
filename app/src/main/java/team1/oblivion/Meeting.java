@@ -8,6 +8,17 @@ public class Meeting {
     Task tasks;
     Notes notes;
     Prayer prayers;
+    Speakers speakers;
+
+
+
+    public Speakers getSpeakers() {
+        return speakers;
+    }
+
+    public void setSpeakers(Speakers speakers) {
+        this.speakers = speakers;
+    }
 
     public DateTimeName getDateTimeNames() {
         return dateTimeNames;
@@ -60,13 +71,15 @@ public class Meeting {
     public Meeting() {
     }
 
-    public Meeting(DateTimeName dateTimeNames, Conductors conductors, Hymn hymns, Task tasks, Notes notes, Prayer prayers) {
+    public Meeting(DateTimeName dateTimeNames, Conductors conductors, Hymn hymns, Task tasks, Notes notes, Prayer prayers, Speakers speakers) {
         this.dateTimeNames = dateTimeNames;
         this.conductors    = conductors;
         this.hymns         = hymns;
         this.tasks         = tasks;
         this.notes         = notes;
         this.prayers       = prayers;
+        this.speakers      = speakers;
+
     }
 
     @Override

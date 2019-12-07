@@ -217,7 +217,7 @@ public class NewMeetingActivity extends AppCompatActivity {
         hymns = new Hymn(openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr);
         speakers = new Speakers(firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
         prayers = new Prayer(firstPrayerStr, secondPrayerStr);
-        notes = new Notes(notesStr, wardBusinessStr);
+        notes = new Notes(notesStr, wardBusinessStr, attendanceStr);
         dateTimeName = new DateTimeName(titleStr, timeStr, dateStr, id);
 
         // Send it to database under "newMeeting"
@@ -228,7 +228,7 @@ public class NewMeetingActivity extends AppCompatActivity {
         databaseReference.child("speakers").setValue(speakers);
         databaseReference.child("prayers").setValue(prayers);
         databaseReference.child("notes").setValue(notes);
-        databaseReference.child("attendance").setValue(attendanceStr);
+
 
         // Display if created successfully
         Toast.makeText(this,"New Meeting Saved Successfully",Toast.LENGTH_SHORT).show();

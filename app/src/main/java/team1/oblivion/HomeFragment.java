@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
 
         meetingList = new MeetingList();
         meetingList.loadData();
-
+        System.out.println(meetingList);
 
         return rootView;
     }

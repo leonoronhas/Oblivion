@@ -17,7 +17,7 @@ public class MeetingList {
     private DatabaseReference databaseReference = database.getReference("Meetings");
     private List<Meeting> meetingList;
 
-    public void loadData(){
+    public List<Meeting> loadData(){
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -27,7 +27,7 @@ public class MeetingList {
                         System.out.println(child.getKey());
 
                         Meeting meeting = child.getValue(Meeting.class);
-                        System.out.println(meeting);
+                        meetingList.add(meeting);
                     }
                 }
             }
@@ -37,6 +37,8 @@ public class MeetingList {
 
             }
         });
+
+        return meetingList;
     }
 
 
