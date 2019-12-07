@@ -2,11 +2,11 @@ package team1.oblivion;
 
 public class Speakers {
 
-    String firstSpeaker;
+    private String firstSpeaker;
 
-    String secondSpeaker;
+    private String secondSpeaker;
 
-    String thirdSpeaker;
+    private String thirdSpeaker;
 
     public String getFirstSpeaker() {
         return firstSpeaker;
@@ -32,7 +32,7 @@ public class Speakers {
         this.thirdSpeaker = thirdSpeaker;
     }
 
-    public Speakers(String firstSpeaker, String secondSpeaker, String thirdSpeaker) {
+    Speakers(String firstSpeaker, String secondSpeaker, String thirdSpeaker) {
         this.firstSpeaker = firstSpeaker;
         this.secondSpeaker = secondSpeaker;
         this.thirdSpeaker = thirdSpeaker;

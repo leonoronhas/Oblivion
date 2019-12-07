@@ -2,9 +2,9 @@ package team1.oblivion;
 
 public class Prayer {
 
-    String firstPrayer;
+    private String firstPrayer;
 
-    String secondPrayer;
+    private String secondPrayer;
 
 
     public String getfirstPrayer() {
@@ -24,7 +24,7 @@ public class Prayer {
     }
 
 
-    public Prayer(String firstPrayer, String secondPrayer) {
+    Prayer(String firstPrayer, String secondPrayer) {
         this.firstPrayer = firstPrayer;
         this.secondPrayer = secondPrayer;
     }

@@ -2,9 +2,9 @@ package team1.oblivion;
 
 public class Task {
 
-    Speakers speakers;
+    private Speakers speakers;
 
-    Prayer prayer;
+    private Prayer prayer;
 
     public Speakers getSpeakers() {
         return speakers;

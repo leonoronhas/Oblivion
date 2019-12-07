@@ -2,9 +2,9 @@ package team1.oblivion;
 
 public class Conductors {
 
-    String presiding;
+    private String presiding;
 
-    String conducting;
+    private String conducting;
 
     public Conductors() {
     }
@@ -25,7 +25,7 @@ public class Conductors {
         this.conducting = conducting;
     }
 
-    public Conductors(String presiding, String conducting) {
+    Conductors(String presiding, String conducting) {
         this.presiding = presiding;
         this.conducting = conducting;
     }

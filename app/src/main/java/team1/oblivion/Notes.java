@@ -2,11 +2,11 @@ package team1.oblivion;
 
 public class Notes {
 
-    String notes;
+    private String notes;
 
-    String wardBusiness;
+    private String wardBusiness;
 
-    String attendance;
+    private String attendance;
 
     public String getAttendance() {
         return attendance;
@@ -35,7 +35,7 @@ public class Notes {
 
 
     //constructor
-    public Notes(String notes, String wardBusiness, String attendance) {
+    Notes(String notes, String wardBusiness, String attendance) {
         this.notes = notes;
         this.attendance = attendance;
         this.wardBusiness = wardBusiness;

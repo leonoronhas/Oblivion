@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 public class HomeFragment extends Fragment {
 
     private View rootView;
-    MeetingList meetingList;
+    private MeetingList meetingList;
 
 
     @Nullable

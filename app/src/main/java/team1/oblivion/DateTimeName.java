@@ -1,10 +1,10 @@
 package team1.oblivion;
 
 public class DateTimeName {
-    String title;
-    String time;
-    String date;
-    String fbKey;
+    private String title;
+    private String time;
+    private String date;
+    private String fbKey;
 
     public String getFbKey() {
         return fbKey;
@@ -38,7 +38,7 @@ public class DateTimeName {
         return date;
     }
 
-    public DateTimeName(String title, String time, String date, String fbKey) {
+    DateTimeName(String title, String time, String date, String fbKey) {
         this.title = title;
         this.time = time;
         this.date = date;

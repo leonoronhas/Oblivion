@@ -2,13 +2,13 @@ package team1.oblivion;
 
 public class Meeting {
 
-    DateTimeName dateTimeNames;
-    Conductors conductors;
-    Hymn hymns;
-    Task tasks;
-    Notes notes;
-    Prayer prayers;
-    Speakers speakers;
+    private DateTimeName dateTimeNames;
+    private Conductors conductors;
+    private Hymn hymns;
+    private Task tasks;
+    private Notes notes;
+    private Prayer prayers;
+    private Speakers speakers;
 
 
 
