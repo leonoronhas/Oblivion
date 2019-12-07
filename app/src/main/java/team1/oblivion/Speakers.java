@@ -37,4 +37,7 @@ public class Speakers {
         this.secondSpeaker = secondSpeaker;
         this.thirdSpeaker = thirdSpeaker;
     }
+
+    public Speakers() {
+    }
 }

@@ -2,10 +2,17 @@ package team1.oblivion;
 
 public class DateTimeName {
     String title;
-
     String time;
-
     String date;
+    String fbKey;
+
+    public String getFbKey() {
+        return fbKey;
+    }
+
+    public void setFbKey(String fbKey) {
+        this.fbKey = fbKey;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -31,13 +38,18 @@ public class DateTimeName {
         return date;
     }
 
-    public DateTimeName(String title, String time, String date) {
+    public DateTimeName(String title, String time, String date, String fbKey) {
         this.title = title;
         this.time = time;
         this.date = date;
+        this.fbKey = fbKey;
     }
 
-    public String toString(){
-        return date + " " + time;
+    public DateTimeName() {
+    }
+
+    @Override
+    public String toString() {
+        return title + " " + date + " | " + time ;
     }
 }

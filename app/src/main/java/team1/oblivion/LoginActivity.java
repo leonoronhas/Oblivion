@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
     private void signUserIn() {
         if (!checkFormFields())
             return;
-
+        progressBar.setVisibility(View.VISIBLE);
         // Convert the inputs to strings
         final String email = username.getText().toString();
         String passwordString = password.getText().toString();
@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    progressBar.setVisibility(View.VISIBLE);
+
                     Toast toast = Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER, 0, 100);
                     toast.show();

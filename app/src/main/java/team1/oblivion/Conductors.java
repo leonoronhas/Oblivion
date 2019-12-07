@@ -6,9 +6,8 @@ public class Conductors {
 
     String conducting;
 
-//    String pianist;
-//
-//    String musicConductor;
+    public Conductors() {
+    }
 
     public String getPresiding() {
         return presiding;

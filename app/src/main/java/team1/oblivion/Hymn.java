@@ -14,6 +14,9 @@ public class Hymn {
         this.closingHymn = closingHymn;
     }
 
+    public Hymn() {
+    }
+
     // Getters
     public String getOpeningHymn() {
         return openingHymn;

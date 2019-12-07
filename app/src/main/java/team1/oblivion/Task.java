@@ -24,7 +24,9 @@ public class Task {
 
     public Task(Speakers speakers, Prayer prayer) {
         this.speakers = speakers;
-//        this.notes = notes;
         this.prayer = prayer;
+    }
+
+    public Task() {
     }
 }

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 public class HomeFragment extends Fragment {
 
     private View rootView;
+    MeetingList meetingList;
 
 
     @Nullable
@@ -32,6 +33,9 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        meetingList = new MeetingList();
+        meetingList.loadData();
 
 
         return rootView;

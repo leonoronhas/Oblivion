@@ -9,35 +9,25 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class MeetingList {
 
-    String name;
-
-
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-    private DatabaseReference databaseReference = database.getReference();
+    private DatabaseReference databaseReference = database.getReference("Meetings");
+    private List<Meeting> meetingList;
 
     public void loadData(){
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    HashMap<String, Object> dataMap = (HashMap<String, Object>) dataSnapshot.getValue();
 
-                    for(String key : dataMap.keySet()){
-                        Object data = dataMap.get(key);
-                        try {
-                            HashMap<String, Object> meetingData = (HashMap<String, Object>) data;
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
+                        System.out.println(child.getKey());
 
-                            //Meeting meeting = new Meeting((String) meetingData.get("meeting"));
-
-
-                        }
-                        catch (ClassCastException exception){
-
-                        }
+                        Meeting meeting = child.getValue(Meeting.class);
+                        System.out.println(meeting);
                     }
                 }
             }

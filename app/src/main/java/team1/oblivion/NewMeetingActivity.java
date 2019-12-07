@@ -218,17 +218,17 @@ public class NewMeetingActivity extends AppCompatActivity {
         speakers = new Speakers(firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
         prayers = new Prayer(firstPrayerStr, secondPrayerStr);
         notes = new Notes(notesStr, wardBusinessStr);
-        dateTimeName = new DateTimeName(titleStr, timeStr, dateStr);
+        dateTimeName = new DateTimeName(titleStr, timeStr, dateStr, id);
 
         // Send it to database under "newMeeting"
         databaseReference = databaseReference.push();
-        databaseReference.child("DateTimeTitle").setValue(dateTimeName);
-        databaseReference.child("Conductors").setValue(conductors);
-        databaseReference.child("Hymns").setValue(hymns);
-        databaseReference.child("Speakers").setValue(speakers);
-        databaseReference.child("Prayer").setValue(prayers);
-        databaseReference.child("Notes").setValue(notes);
-        databaseReference.child("Attendance").setValue(attendanceStr);
+        databaseReference.child("dateTimeNames").setValue(dateTimeName);
+        databaseReference.child("conductors").setValue(conductors);
+        databaseReference.child("hymns").setValue(hymns);
+        databaseReference.child("speakers").setValue(speakers);
+        databaseReference.child("prayers").setValue(prayers);
+        databaseReference.child("notes").setValue(notes);
+        databaseReference.child("attendance").setValue(attendanceStr);
 
         // Display if created successfully
         Toast.makeText(this,"New Meeting Saved Successfully",Toast.LENGTH_SHORT).show();

@@ -2,22 +2,19 @@ package team1.oblivion;
 
 public class Meeting {
 
-    DateTimeName dateTimeName;
-
+    DateTimeName dateTimeNames;
     Conductors conductors;
-
-    Hymn hymn;
-
-    Task task;
-
+    Hymn hymns;
+    Task tasks;
     Notes notes;
+    Prayer prayers;
 
-    public DateTimeName getDateTimeName() {
-        return dateTimeName;
+    public DateTimeName getDateTimeNames() {
+        return dateTimeNames;
     }
 
-    public void setDateTimeName(DateTimeName dateTimeName) {
-        this.dateTimeName = dateTimeName;
+    public void setDateTimeNames(DateTimeName dateTimeNames) {
+        this.dateTimeNames = dateTimeNames;
     }
 
     public Conductors getConductors() {
@@ -28,32 +25,52 @@ public class Meeting {
         this.conductors = conductors;
     }
 
-    public Hymn getHymn() {
-        return hymn;
+    public Hymn getHymns() {
+        return hymns;
     }
 
-    public void setHymn(Hymn hymn) {
-        this.hymn = hymn;
+    public void setHymns(Hymn hymns) {
+        this.hymns = hymns;
     }
 
-    public Task getTask() {
-        return task;
+    public Task getTasks() {
+        return tasks;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    public void setTasks(Task tasks) {
+        this.tasks = tasks;
     }
 
-    public Meeting(DateTimeName dateTimeName, Conductors conductors, Hymn hymn, Task task, Notes notes) {
-        this.dateTimeName = dateTimeName;
-        this.conductors   = conductors;
-        this.hymn         = hymn;
-        this.task         = task;
-        this.notes        = notes;
-
+    public Notes getNotes() {
+        return notes;
     }
 
-    public void MeetingData(DateTimeName dateTimeName, Conductors conductors, Hymn hymn, Task task, Notes notes){
+    public void setNotes(Notes notes) {
+        this.notes = notes;
+    }
 
+    public Prayer getPrayers() {
+        return prayers;
+    }
+
+    public void setPrayers(Prayer prayers) {
+        this.prayers = prayers;
+    }
+
+    public Meeting() {
+    }
+
+    public Meeting(DateTimeName dateTimeNames, Conductors conductors, Hymn hymns, Task tasks, Notes notes, Prayer prayers) {
+        this.dateTimeNames = dateTimeNames;
+        this.conductors    = conductors;
+        this.hymns         = hymns;
+        this.tasks         = tasks;
+        this.notes         = notes;
+        this.prayers       = prayers;
+    }
+
+    @Override
+    public String toString() {
+        return "" + dateTimeNames;
     }
 }

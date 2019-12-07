@@ -28,4 +28,7 @@ public class Prayer {
         this.firstPrayer = firstPrayer;
         this.secondPrayer = secondPrayer;
     }
+
+    public Prayer() {
+    }
 }

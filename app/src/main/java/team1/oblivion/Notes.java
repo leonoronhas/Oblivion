@@ -26,4 +26,7 @@ public class Notes {
         this.notes = notes;
         this.wardBusiness = wardBusiness;
     }
+
+    public Notes() {
+    }
 }
