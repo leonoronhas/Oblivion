@@ -14,9 +14,10 @@ import java.util.List;
 
 class MeetingList {
 
-    HomeFragment homeFragment = new HomeFragment();
+    HomeFragment homeFragment;
 
-    public MeetingList() {
+    public MeetingList(HomeFragment homeFragment) {
+        this.homeFragment = homeFragment;
     }
 
     public List<Meeting> getMeetingList() {
@@ -28,7 +29,7 @@ class MeetingList {
     }
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = database.getReference("Meeting");
+    private DatabaseReference databaseReference = database.getReference("Meetings");
     private List<Meeting> meetingList;
 
     List<Meeting> loadData(){

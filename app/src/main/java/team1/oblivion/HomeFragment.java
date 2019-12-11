@@ -26,16 +26,6 @@ public class HomeFragment extends Fragment {
 
 
 
-    public HomeFragment() {
-
-    }
-
-    public HomeFragment(View rootView, MeetingList meetingList) {
-        //super(contentLayoutId);
-        this.rootView = rootView;
-        this.meetingList = meetingList;
-    }
-
 
     @Nullable
     @Override
@@ -53,7 +43,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        meetingList = new MeetingList();
+        //in this case " this " will be the homeFragment itself
+        meetingList = new MeetingList(this);
         meetingList.loadData();
 
         //dataReady();
