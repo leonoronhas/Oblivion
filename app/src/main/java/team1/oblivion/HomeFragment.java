@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import androidx.annotation.NonNull;
@@ -23,6 +27,7 @@ public class HomeFragment extends Fragment {
     private MainActivity mainActivity;
     private MeetingList meetingList;
     ListView listView;
+    DatabaseReference dbs = FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -47,15 +52,34 @@ public class HomeFragment extends Fragment {
         meetingList = new MeetingList(this);
         meetingList.loadData();
 
-        //dataReady();
-
+//        // ListView clickable
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            TextView titleTv = rootView.findViewById(R.id.titlefromlistviewvalue);
+//            TextView dateTv = rootView.findViewById(R.id.datefromlistviewvalue);
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+////                titleTv.getText().toString();
+////                Intent myIntent = new Intent(getContext(),MeeetinDisplay.class);
+////
+////                titleTv = dbs.child("dateTimeNames").toString();
+////
+////                startActivity(myIntent,meetingList.);
+//
+//
+//            }
+//        });
+//
         return rootView;
     }
 
     public void dataReady(){
         ArrayAdapter<Meeting> adapter = new ArrayAdapter<Meeting>(getActivity(), android.R.layout.simple_list_item_1, meetingList.getMeetingList());
         listView.setAdapter(adapter);
-
     }
+
+
 }
 

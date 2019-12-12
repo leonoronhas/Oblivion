@@ -39,7 +39,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.3.0'
 
 
-
     // Getting a "Could not find" error? Make sure that you've added
     // Google's Maven repository to your root-level build.gradle file
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

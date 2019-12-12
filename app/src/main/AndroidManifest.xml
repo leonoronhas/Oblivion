@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="team1.oblivion">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_add_floating_name"
@@ -10,7 +11,8 @@
         android:roundIcon="@mipmap/ic_add_floating_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewMeetingActivity"></activity>
+        <activity android:name=".MeeetinDisplay"></activity>
+        <activity android:name=".NewMeetingActivity" />
         <activity android:name=".ForgotActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SplashScreen">
