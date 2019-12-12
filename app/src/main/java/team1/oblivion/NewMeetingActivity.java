@@ -186,6 +186,15 @@ public class NewMeetingActivity extends AppCompatActivity {
                 saveMeeting();
             }
         });
+
+        // Button call inside onCreate()
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // Saving the meeting  on Firebase
@@ -237,6 +246,9 @@ public class NewMeetingActivity extends AppCompatActivity {
         Toast.makeText(this,"New Meeting Saved Successfully",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(intent);
+
     }
+
+
 }
 
