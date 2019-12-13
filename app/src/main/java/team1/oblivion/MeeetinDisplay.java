@@ -21,25 +21,15 @@ public class MeeetinDisplay extends AppCompatActivity {
 
         Intent i = getIntent();
 
-
-//        try {
-//            JsonObject jsonObject = new JsonObject(loadJson());
-//
-//        }
-//        catch (IOException ex){
-//        }
-
-
         Gson gson = new Gson();
 
         TextView titleTv = findViewById(R.id.titlefromlistviewvalue);
         TextView dateTv = findViewById(R.id.datefromlistviewvalue);
 
 
-//        String data = i.getStringExtra("mtg");
-//        MeeetinDisplay m = gson.fromJson(data,MeeetinDisplay.class);
-//        titleTv.setText(data);
-//        titleTv = m.getAssets().open("mtg");
+        String data = i.getStringExtra("mtg");
+        Meeting m = gson.fromJson(data,Meeting.class);
+        titleTv.setText(m.getDateTimeNames().getTitle());
 
 
 
