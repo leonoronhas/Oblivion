@@ -24,28 +24,20 @@ public class MeeetinDisplay extends AppCompatActivity {
         Gson gson = new Gson();
 
         TextView titleTv = findViewById(R.id.titlefromlistviewvalue);
-        TextView dateTv = findViewById(R.id.datefromlistviewvalue);
+        TextView dateTv = findViewById(R.id.dateTextViewValue);
+        TextView timeTv = findViewById(R.id.timeViewValue);
+        TextView presidingTv = findViewById(R.id.presidintViewValue);
 
 
         String data = i.getStringExtra("mtg");
         Meeting m = gson.fromJson(data,Meeting.class);
         titleTv.setText(m.getDateTimeNames().getTitle());
+        dateTv.setText(m.getDateTimeNames().getDate());
+        timeTv.setText(m.getDateTimeNames().getTime());
+        presidingTv.setText(m.getConductors().getPresiding());
 
 
 
     }
-//    public String loadJson(){
-//        String json = null;
-//        try {
-//            InputStream loadJson = getAssets().open("mtg");
-//            int size = loadJson.available();
-//            byte[] buffer = new byte[size];
-//            loadJson.read(buffer);
-//            loadJson.close();
-//            json = new String(buffer,"UTF-8");
-//        }
-//        catch (IOException ex){
-//        }
-//        return json;
-//    }
+
 }
