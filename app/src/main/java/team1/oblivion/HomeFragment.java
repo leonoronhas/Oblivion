@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 
 import androidx.annotation.NonNull;
@@ -52,25 +53,27 @@ public class HomeFragment extends Fragment {
         meetingList = new MeetingList(this);
         meetingList.loadData();
 
-//        // ListView clickable
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        // ListView clickable
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Gson gson = new Gson();
+
+                Meeting m = meetingList.getMeetingList().get(position);
+
+//                titleTv.getText().toString();
+
+                Intent myIntent = new Intent(getContext(),MeeetinDisplay.class);
+                myIntent.putExtra("mtg",gson.toJson(m));
+
 //
-//            TextView titleTv = rootView.findViewById(R.id.titlefromlistviewvalue);
-//            TextView dateTv = rootView.findViewById(R.id.datefromlistviewvalue);
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-////                titleTv.getText().toString();
-////                Intent myIntent = new Intent(getContext(),MeeetinDisplay.class);
-////
-////                titleTv = dbs.child("dateTimeNames").toString();
-////
-////                startActivity(myIntent,meetingList.);
-//
-//
-//            }
-//        });
+                startActivity(myIntent);
+
+            }
+        });
 //
         return rootView;
     }
