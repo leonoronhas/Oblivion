@@ -12,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -50,6 +51,7 @@ public class NewMeetingActivity extends AppCompatActivity {
     Notes notes;
     String date;
     String timeTest;
+    boolean checkInput;
 
     // Date and time pickers
     private TextView DisplayDate;
@@ -76,6 +78,7 @@ public class NewMeetingActivity extends AppCompatActivity {
     private EditText secondSpeakerId;
     private EditText thirdSpeakerId;
     private EditText notesId;
+    String dateStr;
     ImageButton saveButton;
     ImageButton cancelButton;
 
@@ -87,8 +90,8 @@ public class NewMeetingActivity extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
 
         // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
+        //int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        //decorView.setSystemUiVisibility(uiOptions);
 
         // Remember that you should never show the action bar if the
         // status bar is hidden, so hide that too if necessary.
@@ -178,7 +181,6 @@ public class NewMeetingActivity extends AppCompatActivity {
             }
         });
 
-
         // Button call inside onCreate()
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,37 +220,58 @@ public class NewMeetingActivity extends AppCompatActivity {
         String secondSpeakerStr = secondSpeakerId.getText().toString().trim();
         String thirdSpeakerStr = thirdSpeakerId.getText().toString().trim();
         String notesStr = notesId.getText().toString().trim();
-        String dateStr = date;
+        dateStr = date;
         String timeStr = timeTest;
 
-        // Assign each string to its class
-        conductors = new Conductors(presidingStr, conductingStr);
-        hymns = new Hymn(openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr);
-        speakers = new Speakers(firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
-        prayers = new Prayer(firstPrayerStr, secondPrayerStr);
-        notes = new Notes(notesStr, wardBusinessStr, attendanceStr);
-        dateTimeName = new DateTimeName(titleStr, timeStr, dateStr, id);
-        //Meeting meeting = new Meeting(dateTimeName, conductors, hymns, tasks, notes, prayers, speakers);
+        if(checkInputs()){
+            // Assign each string to its class
+            conductors = new Conductors(presidingStr, conductingStr);
+            hymns = new Hymn(openingHymnStr, sacramentHymnStr, specialHymnStr, closingHymnStr);
+            speakers = new Speakers(firstSpeakerStr, secondSpeakerStr, thirdSpeakerStr);
+            prayers = new Prayer(firstPrayerStr, secondPrayerStr);
+            notes = new Notes(notesStr, wardBusinessStr, attendanceStr);
+            dateTimeName = new DateTimeName(titleStr, timeStr, dateStr, id);
 
+            // Send it to database under "Meetings"
+            databaseReference = databaseReference.push();
+            databaseReference.child("dateTimeNames").setValue(dateTimeName);
+            databaseReference.child("conductors").setValue(conductors);
+            databaseReference.child("hymns").setValue(hymns);
+            databaseReference.child("speakers").setValue(speakers);
+            databaseReference.child("prayers").setValue(prayers);
+            databaseReference.child("notes").setValue(notes);
 
-        // Send it to database under "newMeeting"
-        databaseReference = databaseReference.push();
-        //databaseReference.child("Meeting").setValue(meeting);
-        databaseReference.child("dateTimeNames").setValue(dateTimeName);
-        databaseReference.child("conductors").setValue(conductors);
-        databaseReference.child("hymns").setValue(hymns);
-        databaseReference.child("speakers").setValue(speakers);
-        databaseReference.child("prayers").setValue(prayers);
-        databaseReference.child("notes").setValue(notes);
-//
-
-        // Display if created successfully
-        Toast.makeText(this,"New Meeting Saved Successfully",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(intent);
-
+            // Display if created successfully
+            Toast.makeText(this,"New Meeting Created Successfully",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+        }
     }
 
+    // Check mandatory inputs (Title, Date, Time)
+    public boolean checkInputs(){
 
+        if(titleId.getText().toString().isEmpty() ){
+            Toast toast = Toast.makeText(getApplicationContext(),"Title required", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, -500);
+            toast.show();
+            return false;
+        }
+        else if (DisplayDate.getText().toString().isEmpty()){
+            Toast toast = Toast.makeText(getApplicationContext(),"Date required", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, -500);
+            toast.show();
+            return false;
+        }
+        else if (displayTime.getText().toString().isEmpty()){
+            Toast toast = Toast.makeText(getApplicationContext(),"Time required", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, -500);
+            toast.show();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }
 

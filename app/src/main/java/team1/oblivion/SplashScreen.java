@@ -16,8 +16,8 @@ public class SplashScreen extends AppCompatActivity {
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
+        //int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        //decorView.setSystemUiVisibility(uiOptions);
         // Remember that you should never show the action bar if the
         // status bar is hidden, so hide that too if necessary.
        ActionBar actionBar = getSupportActionBar();
@@ -27,8 +27,8 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    // 4 seconds delay
-                    sleep(3000);
+                    // 2 seconds delay
+                    sleep(2000);
                     // Send it to Login Activity
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class); // redirected to login activity next
                     startActivity(intent);
