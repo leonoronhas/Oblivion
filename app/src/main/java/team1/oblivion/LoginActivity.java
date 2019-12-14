@@ -91,8 +91,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-
     // Check user input
     private boolean checkFormFields() {
         String email, passwordString;
@@ -132,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                     toast.show();
                     startActivity(intent);
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER, 0, 100);
                     toast.show();
                 }
