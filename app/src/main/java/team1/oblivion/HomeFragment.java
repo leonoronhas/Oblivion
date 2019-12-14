@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
@@ -20,8 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.lang.reflect.Method;
-
 public class HomeFragment extends Fragment {
 
     private View rootView;
@@ -29,8 +26,7 @@ public class HomeFragment extends Fragment {
     private MeetingList meetingList;
     ListView listView;
     DatabaseReference dbs = FirebaseDatabase.getInstance().getReference();
-
-
+    TaskFragment taskFragment;
 
 
     @Nullable
@@ -66,7 +62,7 @@ public class HomeFragment extends Fragment {
 
 //                titleTv.getText().toString();
 
-                Intent myIntent = new Intent(getContext(),MeeetinDisplay.class);
+                Intent myIntent = new Intent(getContext(), MeetingDisplay.class);
                 myIntent.putExtra("mtg",gson.toJson(m));
 
 //

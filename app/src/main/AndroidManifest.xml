@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_add_floating_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MeeetinDisplay"></activity>
+        <activity android:name=".MeetingDisplay"></activity>
         <activity android:name=".NewMeetingActivity" />
         <activity android:name=".ForgotActivity" />
         <activity android:name=".SignUpActivity" />

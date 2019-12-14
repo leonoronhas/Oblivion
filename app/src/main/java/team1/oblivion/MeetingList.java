@@ -15,6 +15,11 @@ import java.util.List;
 class MeetingList {
 
     HomeFragment homeFragment;
+    TaskFragment taskFragment;
+
+    public MeetingList(TaskFragment taskFragment) {
+        this.taskFragment = taskFragment;
+    }
 
     public MeetingList(HomeFragment homeFragment) {
         this.homeFragment = homeFragment;
@@ -49,7 +54,7 @@ class MeetingList {
                          //I can not add something if I dont have data ( vector)
                         meetingList.add(meeting);
                         homeFragment.dataReady();
-
+//                        taskFragment.dataReady();
                     }
                 }
             }

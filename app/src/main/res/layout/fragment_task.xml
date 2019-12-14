@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light">
@@ -9,8 +10,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="5dp"
         android:text="@string/task_view"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
         android:textSize="30sp" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="409dp"
+        android:layout_height="550dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="53dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveFloatingButton"
+        android:layout_width="80dp"
+        android:layout_height="59dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="false"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="8dp"
+        app:fabCustomSize="@android:dimen/app_icon_size"
+        app:fabSize="normal"
+        app:maxImageSize="45dp"
+        app:srcCompat="@drawable/ic_save_button_24dp" />
 
 </RelativeLayout>
