@@ -26,14 +26,13 @@ public class HomeFragment extends Fragment {
     private MeetingList meetingList;
     ListView listView;
     DatabaseReference dbs = FirebaseDatabase.getInstance().getReference();
-    TaskFragment taskFragment;
-
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        //getting views
         FloatingActionButton fab = rootView.findViewById(R.id.floatingActionButton);
         listView = rootView.findViewById(R.id.listViewField);
 
@@ -58,19 +57,19 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Gson gson = new Gson();
 
+                //getting meeting taped
                 Meeting m = meetingList.getMeetingList().get(position);
 
-//                titleTv.getText().toString();
-
                 Intent myIntent = new Intent(getContext(), MeetingDisplay.class);
+
+                //saving taped meeting to Json
                 myIntent.putExtra("mtg",gson.toJson(m));
 
-//
                 startActivity(myIntent);
 
             }
         });
-//
+
         return rootView;
     }
 

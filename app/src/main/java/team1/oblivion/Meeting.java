@@ -10,60 +10,48 @@ public class Meeting {
     private Prayer prayers;
     private Speakers speakers;
 
-
-
+    //getters
     public Speakers getSpeakers() {
         return speakers;
     }
-
-    public void setSpeakers(Speakers speakers) {
-        this.speakers = speakers;
-    }
-
     public DateTimeName getDateTimeNames() {
         return dateTimeNames;
     }
-
-    public void setDateTimeNames(DateTimeName dateTimeNames) {
-        this.dateTimeNames = dateTimeNames;
-    }
-
     public Conductors getConductors() {
         return conductors;
     }
-
-    public void setConductors(Conductors conductors) {
-        this.conductors = conductors;
-    }
-
     public Hymn getHymns() {
         return hymns;
     }
-
-    public void setHymns(Hymn hymns) {
-        this.hymns = hymns;
-    }
-
-    public Task getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(Task tasks) {
-        this.tasks = tasks;
-    }
-
     public Notes getNotes() {
         return notes;
     }
-
-    public void setNotes(Notes notes) {
-        this.notes = notes;
-    }
-
     public Prayer getPrayers() {
         return prayers;
     }
 
+    //setters
+    public void setSpeakers(Speakers speakers) {
+        this.speakers = speakers;
+    }
+    public void setDateTimeNames(DateTimeName dateTimeNames) {
+        this.dateTimeNames = dateTimeNames;
+    }
+    public void setConductors(Conductors conductors) {
+        this.conductors = conductors;
+    }
+    public void setHymns(Hymn hymns) {
+        this.hymns = hymns;
+    }
+    public Task getTasks() {
+        return tasks;
+    }
+    public void setTasks(Task tasks) {
+        this.tasks = tasks;
+    }
+    public void setNotes(Notes notes) {
+        this.notes = notes;
+    }
     public void setPrayers(Prayer prayers) {
         this.prayers = prayers;
     }

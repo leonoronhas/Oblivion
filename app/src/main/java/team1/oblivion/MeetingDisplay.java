@@ -15,10 +15,12 @@ public class MeetingDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meeting_display);
 
+        //retrieve intent data from homeFragments
         Intent i = getIntent();
 
         Gson gson = new Gson();
 
+        // getting views
         TextView titleTv = findViewById(R.id.titlefromlistviewvalue);
         TextView dateTv = findViewById(R.id.dateTextViewValue);
         TextView timeTv = findViewById(R.id.timeViewValue);
@@ -37,9 +39,13 @@ public class MeetingDisplay extends AppCompatActivity {
         TextView attendanceTv = findViewById(R.id.attendanceViewValue);
         TextView notesTv = findViewById(R.id.notesViewValue);
 
-
+        //retrieve meeting taped from listView in homeFragment
         String data = i.getStringExtra("mtg");
+
+        //getting the Json data
         Meeting m = gson.fromJson(data,Meeting.class);
+
+        // assign values to each corresponding view
         titleTv.setText(m.getDateTimeNames().getTitle());
         dateTv.setText(m.getDateTimeNames().getDate());
         timeTv.setText(m.getDateTimeNames().getTime());
@@ -57,8 +63,6 @@ public class MeetingDisplay extends AppCompatActivity {
         benedictionTv.setText(m.getPrayers().getsecondPrayer());
         attendanceTv.setText(m.getNotes().getAttendance());
         notesTv.setText(m.getNotes().getNotes());
-
-
 
     }
 

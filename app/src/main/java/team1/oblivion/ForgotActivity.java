@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class ForgotActivity extends AppCompatActivity {
 
+    String text;
     private EditText emailInput;
-     String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +32,14 @@ public class ForgotActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.editTextRecover);
 
         // making the button work
-         Button buttonRecover = findViewById(R.id.buttonRecover);
-
+        Button buttonRecover = findViewById(R.id.buttonRecover);
 
     }
 
     //display message onclick button
-    public void onClick(View view){
+    public void onClick(View view) {
 
-         text = emailInput.getText().toString();
+        text = emailInput.getText().toString();
 
         if (!text.isEmpty()) {
 
@@ -48,16 +47,15 @@ public class ForgotActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(this, "Email sent!", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, -850);
             toast.show();
-        }
-        else
+        } else
             displayMessage();
     }
 
-    public void displayMessage(){
+    public void displayMessage() {
 
         // convert the  information to a string
 
-         text = emailInput.getText().toString();
+        text = emailInput.getText().toString();
 
         if (text.isEmpty()) {
 
@@ -67,7 +65,5 @@ public class ForgotActivity extends AppCompatActivity {
             toast.show();
 
         }
-
-
     }
 }

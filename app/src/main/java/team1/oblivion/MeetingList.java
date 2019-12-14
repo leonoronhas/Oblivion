@@ -9,17 +9,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 class MeetingList {
 
     HomeFragment homeFragment;
-    TaskFragment taskFragment;
 
-    public MeetingList(TaskFragment taskFragment) {
-        this.taskFragment = taskFragment;
-    }
+    //connecting to a Firebase and getting root data "meetings"
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = database.getReference("Meetings");
+
+    private List<Meeting> meetingList;
+
 
     public MeetingList(HomeFragment homeFragment) {
         this.homeFragment = homeFragment;
@@ -33,28 +34,22 @@ class MeetingList {
         this.meetingList = meetingList;
     }
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = database.getReference("Meetings");
-    private List<Meeting> meetingList;
-
-    List<Meeting> loadData(){
+    // retrieve meeting for firebase
+    List<Meeting> loadData() {
         // when I run this addValue....  This will create " a thread "
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
 
                     meetingList = new ArrayList<Meeting>();
-                    for(DataSnapshot child : dataSnapshot.getChildren()){
-                     //   System.out.println(child.getKey());
-
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
 
                         Meeting meeting = child.getValue(Meeting.class);
 
-                         //I can not add something if I dont have data ( vector)
+                        //Add new meeting in to a list meetings
                         meetingList.add(meeting);
                         homeFragment.dataReady();
-//                        taskFragment.dataReady();
                     }
                 }
             }
@@ -67,5 +62,4 @@ class MeetingList {
 
         return meetingList;
     }
-
 }

@@ -7,20 +7,21 @@ public class Conductors {
     private String conducting;
 
     public Conductors() {
+
     }
 
+    //getters
+    public String getConducting() {
+        return conducting;
+    }
     public String getPresiding() {
         return presiding;
     }
 
+    //setters
     public void setPresiding(String presiding) {
         this.presiding = presiding;
     }
-
-    public String getConducting() {
-        return conducting;
-    }
-
     public void setConducting(String conducting) {
         this.conducting = conducting;
     }
